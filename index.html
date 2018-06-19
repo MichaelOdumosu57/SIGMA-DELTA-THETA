@@ -1,0 +1,69 @@
+<html lang = "en" charset = "windows-1252">
+
+  <!-- required libraries to help make the website work, the src is the path name, to make sure it is retrivied from their proper folders -->
+  <head>
+    <script src="./jquery-1.10.2.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <script src="./jquery_rolodex.js"></script>
+    <script src="./jquery_parallax.js"></script>
+    <script src="./jquery_rotate.js"></script>
+    <script src="./jquery_adv_clone.js"></script>
+    <script src="./jquery_pretty_print.js"></script>
+    <script src="./jquery_carousel.js"></script>
+    <script src="./jquery_michael_toggle.js"></script>
+    <script src="./site_map_instruction.js"></script>
+    <script src="./navigation.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./dimension_parser.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=.21">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./sdt.css">
+
+  </head>
+
+  <!-- developer use of libaries to have website act as designed -->
+  <script>
+      $(document).ready(function() {
+
+            // selector for one page
+            $("body :not([id])").attr("id","index")
+            ////////////////////////////////////////////////////////////////////
+            //places a sticker for classification of the items in the webpage
+            ////////////////////////////////////////////////////////////////////
+
+            // editing the menu object
+            $("#index.nav_container").css({
+              "background-color": "yellow",
+               "margin-top":"4em",
+               "right":"0",
+               "opacity":1,
+               "width":browser_window.outerWidth *.95,
+               "height":"4em",
+               "position":"absolute"
+            })
+            $("#index.group_name").css({
+              "background-color": "white",
+               "margin-top":"-3em",
+               "margin-left":"-1em",
+               "opacity":1,
+               "width":browser_window.outerWidth *.125,
+               "height":browser_window.outerWidth *.125,
+               "position":"absolute",
+               "border-radius":"500px"
+            })
+
+            // $("#index.group_name").adv_clone(2)
+            ////////////////////////////////////////////////////////////////////
+            //
+            ////////////////////////////////////////////////////////////////////
+       });
+  </script>
+<body>
+
+    <div  class = "nav_container">
+        <div  class = "group_name">
+           <h1 class = "solo_group">Sigma<h1>
+        </div>
+    </div>
+</body>
+</html>
