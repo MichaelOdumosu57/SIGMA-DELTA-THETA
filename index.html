@@ -23,6 +23,20 @@
 
   <!-- developer use of libaries to have website act as designed -->
   <script>
+  // helper function
+{
+  function text_dimension(string_selector)
+  {
+      var canvas = document.createElement("canvas");
+      var ctx = canvas.getContext("2d");
+      ctx.font =  string_selector.css("font-size") + " " + string_selector.css("font-family") ;  // This can be set programmaticly from
+      var textWidth = ctx.measureText(string_selector.text()).width;
+      return textWidth
+  }
+}
+  //////////////////////////////////////////////////////////////
+  // this function returns the text width and height of given strings
+  //////////////////////////////////////////////////////////////
       $(document).ready(function() {
 
             // selector for one page
@@ -31,20 +45,63 @@
             //places a sticker for classification of the items in the webpage
             ////////////////////////////////////////////////////////////////////
 
-            // editing the menu object
+            // editing the menu objects
+            var nav_array = ["Home","Events","Story","Foundation","Settings","Join"]
             $("#index.nav_container").css({
               "background-color": "yellow",
-               "margin-top":"4em",
+               "margin-top":"15em",
                "right":"0",
                "opacity":1,
                "width":browser_window.outerWidth *.95,
-               "height":"4em",
-               "position":"absolute"
-            })
+               "height":"8em",
+               "position":"absolute "
+            }).append("<div class = menu_items ><h2>Home</h2></div>")
+
+                $(".menu_items").css({
+                  // "background-color":'green',
+                  "width": text_dimension($( ".menu_items > h2"))
+                })
+
+                $(".menu_items").adv_clone({
+                  items:nav_array.length
+                })
+
+                $(".menu_items").appendTo($(".menu_holder"))
+
+                $(".menu_holder").css({
+                  "top":"1em",
+                  "position":"absolute",
+                  "width":"50em",
+                  "height":"2em",
+
+                }).appendTo($(".nav_container "))
+
+                $.map($(".menu_items >h2"),function(edit,num){
+                  $(edit).text(nav_array[num])
+                  $(edit).css({
+                    "font-size":"3em"
+                  })
+                })
+
+                $.map($(".menu_items"),function(edit,num){
+                  $(edit).css({
+                    "width": text_dimension($( ".menu_items > h2").eq(num)) * 1.2,
+                    "top": "10em"
+                  })
+                })
+
+
+                $("#index.nav_container").pretty_print({
+                  objects:$(".menu_items"),
+                  indent:"40%",
+                  y_spacing:"10em",
+                  x_spacing:"5em"
+                })
+
             $("#index.group_name").css({
               "background-color": "white",
-               "margin-top":"-3em",
-               "margin-left":"-1em",
+               "margin-top":"10em",
+               "margin-left":"2em",
                "opacity":1,
                "width":browser_window.outerWidth *.125,
                "height":browser_window.outerWidth *.125,
@@ -52,24 +109,27 @@
                "border-radius":"500px"
             })
 
-            // $("#index.group_name").adv_clone(2)
+            $("#index.group_name").append("<h1 class = 'solo_group'></h1>")
+
+            $(".solo_group").adv_clone({
+                items:"3",
+                specifiers:[["sigma",1],["delta",2],["theta",3]]
+
+            })
+
+            $(".sigma").text("sigma")
+            $(".delta").text("delta")
+            $(".theta").text("theta")
             ////////////////////////////////////////////////////////////////////
-            //
+            // nav container is the yellow bar with menu headings
+            // group name is circle
             ////////////////////////////////////////////////////////////////////
        });
   </script>
 <body>
 
-    <div  class = "nav_container">
-        <div  class = "group_name">
-           <h1 class = "solo_group">Sigma<h1>
-        </div>
-        <div  class = "group_name">
-           <h1 class = "solo_group">Delta<h1>
-        </div>
-        <div  class = "group_name">
-           <h1 class = "solo_group">Theta<h1>
-        </div>
-    </div>
+    <div  class = "nav_container"></div>
+    <div class  = "menu_holder"></div>
+    <div  class = "group_name"></div>
 </body>
 </html>
