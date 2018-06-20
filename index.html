@@ -46,6 +46,7 @@
             ////////////////////////////////////////////////////////////////////
 
             // editing the menu objects
+      {
             var nav_array = ["Home","Events","Story","Foundation","Settings","Join"]
             $("#index.nav_container").css({
               "background-color": "yellow",
@@ -111,19 +112,27 @@
 
             $("#index.group_name").append("<h1 class = 'solo_group'></h1>")
 
-            $(".solo_group").adv_clone({
+            $(".solo_group").css({
+              "font-family":"zonji",
+              "font-size":"3.8em",
+              "margin-left":'1.3em',
+
+            }).adv_clone({
                 items:"3",
                 specifiers:[["sigma",1],["delta",2],["theta",3]]
 
             })
 
-            $(".sigma").text("sigma")
-            $(".delta").text("delta")
-            $(".theta").text("theta")
+            $(".sigma").text("SIGMA").draggable()
+            $(".delta").text("DELTA").draggable()
+            $(".theta").text("THETA").draggable()
+        }
             ////////////////////////////////////////////////////////////////////
             // nav container is the yellow bar with menu headings
             // group name is circle
             ////////////////////////////////////////////////////////////////////
+
+
        });
   </script>
 <body>
