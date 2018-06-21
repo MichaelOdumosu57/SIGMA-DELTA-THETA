@@ -41,6 +41,8 @@
 
             // selector for one page
             $("body :not([id])").attr("id","index")
+
+
             ////////////////////////////////////////////////////////////////////
             //places a sticker for classification of the items in the webpage
             ////////////////////////////////////////////////////////////////////
@@ -50,11 +52,11 @@
             var nav_array = ["Home","Events","Story","Foundation","Settings","Join"]
             $("#index.nav_container").css({
               "background-color": "yellow",
-               "margin-top":"15em",
+               "margin-top":"12em",
                "right":"0",
                "opacity":1,
                "width":browser_window.outerWidth *.95,
-               "height":"8em",
+               "height":"6em",
                "position":"absolute "
             }).append("<div class = menu_items ><h2>Home</h2></div>")
 
@@ -70,7 +72,7 @@
                 $(".menu_items").appendTo($(".menu_holder"))
 
                 $(".menu_holder").css({
-                  "top":"1em",
+                  "top":".5em",
                   "position":"absolute",
                   "width":"50em",
                   "height":"2em",
@@ -80,7 +82,7 @@
                 $.map($(".menu_items >h2"),function(edit,num){
                   $(edit).text(nav_array[num])
                   $(edit).css({
-                    "font-size":"3em"
+                    "font-size":"2em"
                   })
                 })
 
@@ -102,7 +104,7 @@
             $("#index.group_name").css({
               "background-color": "white",
                "margin-top":"10em",
-               "margin-left":"2em",
+               "margin-left":"3em",
                "opacity":1,
                "width":browser_window.outerWidth *.125,
                "height":browser_window.outerWidth *.125,
@@ -114,8 +116,9 @@
 
             $(".solo_group").css({
               "font-family":"zonji",
-              "font-size":"3.8em",
+              "font-size":"2.2em",
               "margin-left":'1.3em',
+              "margin-top":".5em"
 
             }).adv_clone({
                 items:"3",
@@ -137,19 +140,30 @@
           $(".sub_menu").css({
             "background-color":"white",
             "width":browser_window.outerWidth * .95,
-            "height":"15em",
-            "position":"absolute",
+            "height":"8em",
             "right":"0",
             "margin-top":"3.5%",
             "-moz-border-top-left-radius": " 500px 500px;"
           }).hide()
 
           $(".yellow_circle").css({
-            "width":numberParse($(".sub_menu").css("height")),
+            "width":numberParse($(".sub_menu").css("height")) *.9,
             "height":numberParse($(".sub_menu").css("height"))*.9,
+            "margin-left":"3%",
+            "margin-top" :".5em",
             "border-radius":"500px",
-            "background-color": "yellow"
+            "background-color": "yellow",
+
           })
+
+          $(".sub_menu").adv_clone(4)
+
+          $("body").pretty_print({
+            objects: $(".sub_menu"),
+            y_spacing:"12%"
+          })
+
+
 
           $(".menu_items").click(function(event){
               $("body > :not(.sub_menu)").css({
@@ -163,6 +177,14 @@
         }
             ////////////////////////////////////////////////////////////////////
             // sub menu controls sub memu options when one is chosen
+            ////////////////////////////////////////////////////////////////////
+
+            // position fix
+            $("body > *").css({
+              "position":"absolute"
+            })
+            ////////////////////////////////////////////////////////////////////
+            // global fix for purposeful programming
             ////////////////////////////////////////////////////////////////////
        });
   </script>
