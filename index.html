@@ -123,16 +123,47 @@
 
             })
 
-            $(".sigma").text("SIGMA").draggable()
-            $(".delta").text("DELTA").draggable()
-            $(".theta").text("THETA").draggable()
+            $(".sigma").text("SIGMA")
+            $(".delta").text("DELTA")
+            $(".theta").text("THETA")
         }
             ////////////////////////////////////////////////////////////////////
             // nav container is the yellow bar with menu headings
             // group name is circle
             ////////////////////////////////////////////////////////////////////
 
+            // subsections of navigation control
+        {
+          $(".sub_menu").css({
+            "background-color":"white",
+            "width":browser_window.outerWidth * .95,
+            "height":"15em",
+            "position":"absolute",
+            "right":"0",
+            "margin-top":"3.5%",
+            "-moz-border-top-left-radius": " 500px 500px;"
+          }).hide()
 
+          $(".yellow_circle").css({
+            "width":numberParse($(".sub_menu").css("height")),
+            "height":numberParse($(".sub_menu").css("height"))*.9,
+            "border-radius":"500px",
+            "background-color": "yellow"
+          })
+
+          $(".menu_items").click(function(event){
+              $("body > :not(.sub_menu)").css({
+                "opacity":".2"
+              })
+              $(".sub_menu").show()
+          })
+
+
+
+        }
+            ////////////////////////////////////////////////////////////////////
+            // sub menu controls sub memu options when one is chosen
+            ////////////////////////////////////////////////////////////////////
        });
   </script>
 <body>
@@ -140,5 +171,8 @@
     <div  class = "nav_container"></div>
     <div class  = "menu_holder"></div>
     <div  class = "group_name"></div>
+    <div class = "sub_menu">
+      <div class = "yellow_circle"></div>
+    </div>
 </body>
 </html>
