@@ -37,6 +37,21 @@
   //////////////////////////////////////////////////////////////
   // this function returns the text width and height of given strings
   //////////////////////////////////////////////////////////////
+
+// helper function
+{
+  function wait(ms){
+     var start = new Date().getTime();
+     var end = start;
+     while(end < start + ms) {
+       end = new Date().getTime();
+    }
+  }
+}
+    //////////////////////////////////////////////////////////////
+    // this function returns the text width and height of given strings
+    //////////////////////////////////////////////////////////////
+
       $(document).ready(function() {
 
             // selector for one page
@@ -178,22 +193,22 @@
 
               console.log(by_one)
 
-              function one_time(length){
-                  length +=1;
-                  if (length = by_one.length){
-                    return
-                  }
 
-                  else{
-                    console.log(by_one[length - 1])
-                    by_one[length - 1].stop().animate({
-                      "margin-left":"0"
-                    },700,one_time(length ))
-                  }
+              $(".sub_menu:first").animate({
+                "margin-left":"0"
+              },1000,a(0))
 
+              function a(b){
+                b +=1
+                if(b  == $(".sub_menu").length ){
+                  return
+                }
+                console.log(b)
+                $(".sub_menu").eq(b).delay(b*300).animate({
+                  "margin-left":"0"
+                },1000,a(b))
               }
 
-              one_time(0);
           })
 
 
@@ -201,6 +216,7 @@
         }
             ////////////////////////////////////////////////////////////////////
             // sub menu controls sub memu options when one is chosen
+            // the event handler manipulates the delay method to help it function
             ////////////////////////////////////////////////////////////////////
 
             // position fix
