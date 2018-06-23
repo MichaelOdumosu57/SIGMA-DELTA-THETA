@@ -15,7 +15,7 @@
     <script src="./navigation.js"></script>
     <script src="./bootstrap.min.js"></script>
     <script src="./dimension_parser.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=.21">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./sdt.css">
 
@@ -142,8 +142,10 @@
             "width":browser_window.outerWidth * .95,
             "height":"8em",
             "right":"0",
+            "margin-left":browser_window.outerWidth * .8,
             "margin-top":"3.5%",
-            "-moz-border-top-left-radius": " 500px 500px;"
+            "-moz-border-top-left-radius": " 500px 500px;",
+            "opacity":".8"
           }).hide()
 
           $(".yellow_circle").css({
@@ -169,7 +171,29 @@
               $("body > :not(.sub_menu)").css({
                 "opacity":".2"
               })
-              $(".sub_menu").show()
+              var by_one = $.map($(".sub_menu"),function(show){
+                  $(show).show()
+                  return $(show)
+              });
+
+              console.log(by_one)
+
+              function one_time(length){
+                  length +=1;
+                  if (length = by_one.length){
+                    return
+                  }
+
+                  else{
+                    console.log(by_one[length - 1])
+                    by_one[length - 1].stop().animate({
+                      "margin-left":"0"
+                    },700,one_time(length ))
+                  }
+
+              }
+
+              one_time(0);
           })
 
 
