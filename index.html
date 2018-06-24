@@ -154,7 +154,7 @@
         {
           $(".sub_menu").css({
             "background-color":"white",
-            "width":browser_window.outerWidth * .95,
+            "width":browser_window.outerWidth * .92,
             "height":"8em",
             "right":"0",
             "margin-left":browser_window.outerWidth * .8,
@@ -166,7 +166,7 @@
           $(".yellow_circle").css({
             "width":numberParse($(".sub_menu").css("height")) *.9,
             "height":numberParse($(".sub_menu").css("height"))*.9,
-            "margin-left":"3%",
+            "margin-left":"1.5%",
             "margin-top" :".5em",
             "border-radius":"500px",
             "background-color": "yellow",
@@ -219,6 +219,18 @@
             // the event handler manipulates the delay method to help it function
             ////////////////////////////////////////////////////////////////////
 
+            // images
+        {
+            $(".trapezoid").css({
+              "background-image":"./photos/a.jpeg"
+            })
+
+        }
+            ////////////////////////////////////////////////////////////////////
+            // images should be contained in shapes
+            ////////////////////////////////////////////////////////////////////
+
+
             // position fix
             $("body > *").css({
               "position":"absolute"
@@ -235,6 +247,9 @@
     <div  class = "group_name"></div>
     <div class = "sub_menu">
       <div class = "yellow_circle"></div>
+    </div>
+    <div class = "trapezoid">
+
     </div>
 </body>
 </html>
