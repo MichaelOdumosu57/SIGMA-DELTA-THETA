@@ -14,20 +14,20 @@
 /*  shapes*/
 .cut-diamond {
    border-style: solid;
-    border-color: transparent transparent red transparent;
-     border-width: 0 25px 25px 25px;
-      height: 0; width: 50px; position: relative; margin: 20px 0 50px 0;
+    border-color: transparent black transparent black;
+     border-width: 0 500px 50px 50px;
+      height: 0; width: 100px; position: relative; margin: 00px 0 100px 0;
        }
         .cut-diamond:after {
           content: "";
            position: absolute;
-            top: 25px;
-             left: -25px;
+            top: 0px;
+             left: -50px;
               width: 0;
                height: 0;
                 border-style: solid;
-                 border-color: red transparent transparent transparent;
-                  border-width: 70px 50px 0 50px;
+                 border-color: transparent black transparent black;
+                  border-width: 600px 300px 0 250px;
                 }
 
 
@@ -37,9 +37,7 @@
     border-bottom: 100px solid black;
     height: 400px;
     width: 0;
-    margin-top:25%;
-    margin-left:15%;
-    background-image:url("./photos/a.jpeg");
+
    }
 
 
