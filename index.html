@@ -62,6 +62,16 @@
             //places a sticker for classification of the items in the webpage
             ////////////////////////////////////////////////////////////////////
 
+            // resizing the containers
+
+            $(".container").css({
+              width:browser_window.outerWidth
+            })
+            ////////////////////////////////////////////////////////////////////
+            //places a sticker for classification of the items in the webpage
+            ////////////////////////////////////////////////////////////////////
+
+
             // editing the menu objects
       {
             var nav_array = ["Home","Events","Story","Foundation","Settings","Join"]
@@ -156,7 +166,7 @@
             "background-color":"white",
             "width":browser_window.outerWidth * .92,
             "height":"8em",
-            "right":"0",
+            "right":"100em",
             "margin-left":browser_window.outerWidth * .8,
             "margin-top":"3.5%",
             "-moz-border-top-left-radius": " 500px 500px;",
@@ -249,7 +259,7 @@
                 "height":"300px",
                 "width":"360px",
                 "background-image":"url('./photos/b.jpeg')",
-                "margin-top":"30%",
+                "margin-top":"25%",
                 "margin-left":"70%",
                 "background-size":"500px 350px",
                 "background-position":"60 00"
@@ -267,6 +277,11 @@
             $("body > *").css({
               "position":"absolute"
             })
+
+            $(".shape ").css({
+              "position":"absolute"
+            })
+
             ////////////////////////////////////////////////////////////////////
             // global fix for purposeful programming
             ////////////////////////////////////////////////////////////////////
@@ -274,24 +289,25 @@
   </script>
 <body>
 
-
+  <div class = "container">
     <div  class = "nav_container"></div>
     <div class  = "menu_holder"></div>
     <div  class = "group_name"></div>
     <div class = "sub_menu">
       <div class = "yellow_circle"></div>
     </div>
-    <div class = "picture_holder_1">
+    <div class = "picture_holder_1 shape">
         <div class = "trapezoid">
         </div>
     </div>
-    <div class = "picture_holder_2">
+    <div class = "picture_holder_2 shape">
         <div class = "cut-diamond">
         </div>
     </div>
-    <div class = "picture_holder_3">
+    <div class = "picture_holder_3 shape">
         <div class = "pointer">
         </div>
     </div>
+  </div>
 </body>
 </html>
