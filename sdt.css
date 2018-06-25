@@ -40,6 +40,39 @@
 
    }
 
+ .pointer {
+    width: 300px;
+    height: 300px;
+     position: absolute;
+      background: transparent;
+       }
+
+ .pointer:after {
+    content: "";
+    position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 0;
+     height: 0;
+     border-left: 60px solid black;
+     border-top: 140px solid transparent;
+     border-bottom: 160px solid transparent;
+
+            }
+
+  .pointer:before {
+     content: "";
+     position: absolute;
+     right: -60px;
+      bottom: 0;
+     width: 0;
+     height: 0;
+     border-left: 60px solid transparent;
+    border-top: 140px solid black;
+     border-bottom: 160px solid black;
+   }
+
+
 
 /*  index page*/
 
