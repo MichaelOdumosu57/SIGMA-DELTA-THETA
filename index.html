@@ -272,6 +272,54 @@
             // images should be contained in shapes
             ////////////////////////////////////////////////////////////////////
 
+            // image animation
+          {
+            var image_list = ["./photos/a.jpeg",
+                              "./photos/d.jpeg",
+                              "./photos/b.jpeg",
+                              "./photos/a.jpeg",
+                              "./photos/d.jpeg",
+                              "./photos/b.jpeg",
+                              "./photos/a.jpeg",
+                              "./photos/d.jpeg",
+                              "./photos/b.jpeg"
+                              ]
+
+
+          $(".div_tester").click(function(){
+            var a = 600
+            var b;
+              if(a == 600){
+
+                  b = a
+                  a+= 1
+              }
+              $(".picture_holder_1").fadeOut(4000)
+              $(".picture_holder_2").delay(b).fadeOut(4000)
+              $(".picture_holder_3").delay(b*2).fadeOut(4000)
+          });
+
+          function go_away(x){
+            while(x != 0){
+            x -= 1;
+            $(".div_tester").trigger("click",600)
+              $(".picture_holder_1").fadeIn(4000)
+              $(".picture_holder_2").fadeIn(4000)
+              $(".picture_holder_3").fadeIn(4000)
+            }
+
+          }
+              go_away(200)
+
+        }
+
+            ////////////////////////////////////////////////////////////////////
+            // I would like to have 9 images so make a list of 9 using the 3 u have and fix them later
+            // go_away and come back are functions controlling the show hide functionality
+            //
+            ////////////////////////////////////////////////////////////////////
+
+
 
             // position fix
             $("body > *").css({
