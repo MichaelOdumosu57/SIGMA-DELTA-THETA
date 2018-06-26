@@ -274,7 +274,8 @@
 
             // image animation
           {
-            var image_list = ["./photos/a.jpeg",
+            var image_list = [
+                              "./photos/a.jpeg",
                               "./photos/d.jpeg",
                               "./photos/b.jpeg",
                               "./photos/a.jpeg",
@@ -283,10 +284,26 @@
                               "./photos/a.jpeg",
                               "./photos/d.jpeg",
                               "./photos/b.jpeg"
+
                               ]
 
+          picture_holder_array_1 = [$(".picture_holder_1").css("height"),$(".picture_holder_1").css("width"),$(".picture_holder_1").css("margin-left"),$(".picture_holder_1").css("background-size"),$(".picture_holder_1").css("background-position")]
+          picture_holder_array_2 = [$(".picture_holder_2").css("height"),$(".picture_holder_2").css("width"),$(".picture_holder_2").css("margin-left"),$(".picture_holder_2").css("background-size"),$(".picture_holder_2").css("background-position")]
+          picture_holder_array_3 = [$(".picture_holder_3").css("height"),$(".picture_holder_3").css("width"),$(".picture_holder_3").css("margin-left"),$(".picture_holder_3").css("background-size"),$(".picture_holder_3").css("background-position")]
+          holder_array = [ picture_holder_array_1,
+                           picture_holder_array_2,
+                           picture_holder_array_3
 
-          $(".div_tester").click(function(){
+                          ]
+          function moving_add(x){
+              if(x > image_list.length){
+                x = 0
+              }
+              x += 1;
+
+              return x;
+          }
+          function come_back(img){
             var a = 600
             var b;
               if(a == 600){
@@ -294,22 +311,57 @@
                   b = a
                   a+= 1
               }
-              $(".picture_holder_1").fadeOut(4000)
+              else{
+                b = 0;
+              }
+
+
+
               $(".picture_holder_2").delay(b).fadeOut(4000)
               $(".picture_holder_3").delay(b*2).fadeOut(4000)
-          });
 
-          function go_away(x){
+              $(".picture_holder_1").animate({
+
+                "opacity":0
+              },4000,reappear)
+
+
+
+
+
+          };
+
+          function go_away(x,pic){
             while(x != 0){
-            x -= 1;
-            $(".div_tester").trigger("click",600)
-              $(".picture_holder_1").fadeIn(4000)
+              x -= 1
+
+
+              come_back(pic)
+              console.log(pic)
+
+
+              $(".picture_holder_1").animate({
+
+                "opacity":1
+              },4000)
+
+
+
+
               $(".picture_holder_2").fadeIn(4000)
               $(".picture_holder_3").fadeIn(4000)
             }
 
           }
-              go_away(200)
+
+          function reappear(){
+            $(".picture_holder_1").css({
+              "margin-left":$(".picture_holder_2").css("margin-left")
+
+            },4000)
+
+          }
+              go_away(200,0)
 
         }
 
