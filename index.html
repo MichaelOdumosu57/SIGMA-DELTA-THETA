@@ -286,11 +286,31 @@
                               "./photos/b.jpeg"
 
                               ]
+                              // objects
+          picture_holder_array_1 = {
+            "height": $(".picture_holder_1").css("height"),
+            "width": $(".picture_holder_1").css("width"),
+            "margin-left " :$(".picture_holder_1").css("margin-left"),
+            "background-size" :$(".picture_holder_1").css("background-size"),
+            "background-position " :$(".picture_holder_1").css("background-position")
+          }
 
-          picture_holder_array_1 = [$(".picture_holder_1").css("height"),$(".picture_holder_1").css("width"),$(".picture_holder_1").css("margin-left"),$(".picture_holder_1").css("background-size"),$(".picture_holder_1").css("background-position")]
-          picture_holder_array_2 = [$(".picture_holder_2").css("height"),$(".picture_holder_2").css("width"),$(".picture_holder_2").css("margin-left"),$(".picture_holder_2").css("background-size"),$(".picture_holder_2").css("background-position")]
-          picture_holder_array_3 = [$(".picture_holder_3").css("height"),$(".picture_holder_3").css("width"),$(".picture_holder_3").css("margin-left"),$(".picture_holder_3").css("background-size"),$(".picture_holder_3").css("background-position")]
-          holder_array = [ picture_holder_array_1,
+          picture_holder_array_2 = {
+            "height": $(".picture_holder_2").css("height"),
+            "width": $(".picture_holder_2").css("width"),
+            "margin-left " :$(".picture_holder_2").css("margin-left"),
+            "background-size" :$(".picture_holder_2").css("background-size"),
+            "background-position ":$(".picture_holder_2").css("background-position")
+          }
+
+          picture_holder_array_3 = {
+            "height": $(".picture_holder_3").css("height"),
+            "width": $(".picture_holder_3").css("width"),
+            "margin-left " :$(".picture_holder_3").css("margin-left"),
+            "background-size" :$(".picture_holder_3").css("background-size"),
+            "background-position ": $(".picture_holder_3").css("background-position")
+          }
+        holder_array = [ picture_holder_array_1,
                            picture_holder_array_2,
                            picture_holder_array_3
 
@@ -317,13 +337,26 @@
 
 
 
-              $(".picture_holder_2").delay(b).fadeOut(4000)
-              $(".picture_holder_3").delay(b*2).fadeOut(4000)
+              // $(".picture_holder_2").delay(b).fadeOut(4000)
+              // $(".picture_holder_3").delay(b*2).fadeOut(4000)
+
+
 
               $(".picture_holder_1").animate({
 
                 "opacity":0
               },4000,reappear)
+
+              $(".picture_holder_2").animate({
+
+                "opacity":0
+              },4000)
+
+              $(".picture_holder_3").animate({
+
+                "opacity":0
+              },4000)
+
 
 
 
@@ -345,21 +378,49 @@
                 "opacity":1
               },4000)
 
+              $(".picture_holder_2").animate({
+
+                "opacity":1
+              },4000)
+
+              $(".picture_holder_3").animate({
+
+                "opacity":1
+              },4000)
 
 
 
-              $(".picture_holder_2").fadeIn(4000)
-              $(".picture_holder_3").fadeIn(4000)
             }
 
           }
 
+          var fst = 1;
+          var snd = 2;
+          var thr = 0;
           function reappear(){
-            $(".picture_holder_1").css({
-              "margin-left":$(".picture_holder_2").css("margin-left")
 
-            },4000)
+            $(".picture_holder_1").css(holder_array[fst],4000)
+            $(".picture_holder_2").css(holder_array[snd],4000)
+            $(".picture_holder_3").css(holder_array[thr],4000)
+            console.log(fst,snd,thr)
+            if(fst == 0){
+              snd = 2
+              thr = 0
+              fst = 1
 
+            }
+            else if(fst == 1){
+              snd = 0
+              thr = 1
+              fst = 2
+
+            }
+            else if(fst == 2) {
+              snd = 1
+              thr = 2
+              fst = 0
+
+            }
           }
               go_away(200,0)
 
@@ -368,7 +429,7 @@
             ////////////////////////////////////////////////////////////////////
             // I would like to have 9 images so make a list of 9 using the 3 u have and fix them later
             // go_away and come back are functions controlling the show hide functionality
-            //
+            // reapper helps picture holders move to different spots
             ////////////////////////////////////////////////////////////////////
 
 
