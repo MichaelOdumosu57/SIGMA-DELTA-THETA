@@ -314,7 +314,14 @@
                            picture_holder_array_2,
                            picture_holder_array_3
 
+                         ]
+
+        margin_left_info = [ $(".picture_holder_1").css("margin-left"),
+                           $(".picture_holder_2").css("margin-left"),
+                           $(".picture_holder_3").css("margin-left")
+
                           ]
+
           function moving_add(x){
               if(x > image_list.length){
                 x = 0
@@ -402,6 +409,10 @@
             $(".picture_holder_1").css(holder_array[fst],4000)
             $(".picture_holder_2").css(holder_array[snd],4000)
             $(".picture_holder_3").css(holder_array[thr],4000)
+            $(".picture_holder_1").css("margin-left",margin_left_info[fst])
+            $(".picture_holder_2").css("margin-left",margin_left_info[snd])
+            $(".picture_holder_3").css("margin-left",margin_left_info[thr])
+
             console.log(fst,snd,thr)
             if(fst == 0){
               snd = 2
@@ -430,6 +441,8 @@
             // I would like to have 9 images so make a list of 9 using the 3 u have and fix them later
             // go_away and come back are functions controlling the show hide functionality
             // reapper helps picture holders move to different spots
+            // margin left needed its own array for some reason i am hinting the picture dimensions also wiill
+               // require the same 
             ////////////////////////////////////////////////////////////////////
 
 
