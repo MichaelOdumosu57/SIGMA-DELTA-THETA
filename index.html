@@ -242,7 +242,8 @@
                 "background-image":"url('./photos/a.jpeg')",
                 "margin-top":"25%",
                 "margin-left":"10%",
-                "background-size":"400px 400px"
+                "background-size":"400px 400px",
+                "background-position":"00 00"
             })
 
             $(".picture_holder_2").css({
@@ -288,27 +289,20 @@
                               ]
                               // objects
           picture_holder_array_1 = {
-            "height": $(".picture_holder_1").css("height"),
-            "width": $(".picture_holder_1").css("width"),
-            "margin-left " :$(".picture_holder_1").css("margin-left"),
-            "background-size" :$(".picture_holder_1").css("background-size"),
-            "background-position " :$(".picture_holder_1").css("background-position")
+
+            "margin-left " :$(".picture_holder_1").css("margin-left")
           }
 
           picture_holder_array_2 = {
-            "height": $(".picture_holder_2").css("height"),
-            "width": $(".picture_holder_2").css("width"),
-            "margin-left " :$(".picture_holder_2").css("margin-left"),
-            "background-size" :$(".picture_holder_2").css("background-size"),
-            "background-position ":$(".picture_holder_2").css("background-position")
+
+            "margin-left " :$(".picture_holder_2").css("margin-left")
+
           }
 
           picture_holder_array_3 = {
-            "height": $(".picture_holder_3").css("height"),
-            "width": $(".picture_holder_3").css("width"),
-            "margin-left " :$(".picture_holder_3").css("margin-left"),
-            "background-size" :$(".picture_holder_3").css("background-size"),
-            "background-position ": $(".picture_holder_3").css("background-position")
+
+            "margin-left " :$(".picture_holder_3").css("margin-left")
+
           }
         holder_array = [ picture_holder_array_1,
                            picture_holder_array_2,
@@ -316,11 +310,11 @@
 
                          ]
 
-        margin_left_info = [ $(".picture_holder_1").css("margin-left"),
-                           $(".picture_holder_2").css("margin-left"),
-                           $(".picture_holder_3").css("margin-left")
+        margin_left_info = [ [$(".picture_holder_1").css("margin-left"),'url("./photos/a.jpeg")',$(".trapezoid")],
+                           [$(".picture_holder_2").css("margin-left"),'url("./photos/d.jpeg")',$(".cut-diamond")],
+                           [$(".picture_holder_3").css("margin-left"),'url("./photos/b.jpeg")',$(".pointer")]
 
-                          ]
+                           ]
 
           function moving_add(x){
               if(x > image_list.length){
@@ -364,11 +358,6 @@
                 "opacity":0
               },4000)
 
-
-
-
-
-
           };
 
           function go_away(x,pic){
@@ -406,18 +395,25 @@
           var thr = 0;
           function reappear(){
 
-            $(".picture_holder_1").css(holder_array[fst],4000)
-            $(".picture_holder_2").css(holder_array[snd],4000)
-            $(".picture_holder_3").css(holder_array[thr],4000)
-            $(".picture_holder_1").css("margin-left",margin_left_info[fst])
-            $(".picture_holder_2").css("margin-left",margin_left_info[snd])
-            $(".picture_holder_3").css("margin-left",margin_left_info[thr])
+            // $(".picture_holder_1").css(holder_array[fst],4000)
+            // $(".picture_holder_2").css(holder_array[snd],4000)
+            // $(".picture_holder_3").css(holder_array[thr],4000)
+            // $(".picture_holder_1").css("margin-left",margin_left_info[fst][0])
+            // $(".picture_holder_2").css("margin-left",margin_left_info[snd][0])
+            // $(".picture_holder_3").css("margin-left",margin_left_info[thr][0])
+            $(".picture_holder_1").css("background-image",margin_left_info[fst][1])
+            $(".picture_holder_2").css("background-image",margin_left_info[snd][1])
+            $(".picture_holder_3").css("background-image",margin_left_info[thr][1])
 
-            console.log(fst,snd,thr)
+
+            console.log(fst + 1,snd + 1,thr + 1)
             if(fst == 0){
               snd = 2
               thr = 0
               fst = 1
+              // $(".picture_holder_1").append($(".trapezoid"))
+              // $(".picture_holder_2").append($(".cut-diamond"))
+              // $(".picture_holder_3").append($(".pointer"))
 
             }
             else if(fst == 1){
@@ -425,15 +421,24 @@
               thr = 1
               fst = 2
 
+              // $(".picture_holder_1").append($(".pointer"))
+              // $(".picture_holder_2").append($(".trapezoid"))
+              // $(".picture_holder_3").append($(".cut-diamond"))
+
             }
             else if(fst == 2) {
               snd = 1
               thr = 2
               fst = 0
+              // $(".picture_holder_1").append($(".cut-diamond"))
+              // $(".picture_holder_2").append($(".pointer"))
+              // $(".picture_holder_3").append($(".trapezoid"))
+
 
             }
           }
-              go_away(200,0)
+              go_away(2000,0)
+              // setTimeout(2,go_away,2000,0)
 
         }
 
@@ -442,7 +447,7 @@
             // go_away and come back are functions controlling the show hide functionality
             // reapper helps picture holders move to different spots
             // margin left needed its own array for some reason i am hinting the picture dimensions also wiill
-               // require the same 
+               // require the same
             ////////////////////////////////////////////////////////////////////
 
 
@@ -471,15 +476,15 @@
       <div class = "yellow_circle"></div>
     </div>
     <div class = "picture_holder_1 shape">
-        <div class = "trapezoid">
+        <div class = "trapezoid shape">
         </div>
     </div>
     <div class = "picture_holder_2 shape">
-        <div class = "cut-diamond">
+        <div class = "cut-diamond shape">
         </div>
     </div>
     <div class = "picture_holder_3 shape">
-        <div class = "pointer">
+        <div class = "pointer shape">
         </div>
     </div>
   </div>
