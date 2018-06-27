@@ -13,6 +13,7 @@
     <script src="./jquery_michael_toggle.js"></script>
     <script src="./site_map_instruction.js"></script>
     <script src="./navigation.js"></script>
+    <!-- <script src="./footer.js"></script> -->
     <script src="./bootstrap.min.js"></script>
     <script src="./dimension_parser.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -329,7 +330,7 @@
             var b;
               if(a == 600){
 
-                  b = a
+                  b = 0
                   a+= 1
               }
               else{
@@ -348,12 +349,12 @@
                 "opacity":0
               },4000,reappear)
 
-              $(".picture_holder_2").animate({
+              $(".picture_holder_2").delay(b).animate({
 
                 "opacity":0
               },4000)
 
-              $(".picture_holder_3").animate({
+              $(".picture_holder_3").delay(b * 2).animate({
 
                 "opacity":0
               },4000)
@@ -468,13 +469,13 @@
   </script>
 <body>
 
+  <div class = "sub_menu">
+    <div class = "yellow_circle"></div>
+  </div>
   <div class = "container">
-    <div  class = "nav_container"></div>
+    <div  class = "nav_container well"></div>
     <div class  = "menu_holder"></div>
     <div  class = "group_name"></div>
-    <div class = "sub_menu">
-      <div class = "yellow_circle"></div>
-    </div>
     <div class = "picture_holder_1 shape">
         <div class = "trapezoid shape">
         </div>
@@ -488,5 +489,6 @@
         </div>
     </div>
   </div>
+
 </body>
 </html>
