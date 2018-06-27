@@ -11,6 +11,19 @@
           font-weight: normal;
           font-style: normal;
         }
+
+        .web_colors{
+                    color:yellow;
+                    background-color: rgba(0,0,0,.8);
+                    border-radius: 25px;
+
+                  }
+
+        .footer {
+                  margin-bottom: 10%;
+                  position: absolute;
+
+        }
 /*  shapes*/
 .cut-diamond {
    border-style: solid;
