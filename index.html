@@ -305,7 +305,7 @@
             "margin-left " :$(".picture_holder_3").css("margin-left")
 
           }
-        holder_array = [ picture_holder_array_1,
+        holder_array = [   picture_holder_array_1,
                            picture_holder_array_2,
                            picture_holder_array_3
 
@@ -438,7 +438,9 @@
 
             }
           }
-              go_away(200,0)
+              if(devices[0] === "lg"){
+                go_away(200,0)
+              }
               // setTimeout(2,go_away,2000,0)
 
         }
@@ -451,7 +453,43 @@
                // require the same
             ////////////////////////////////////////////////////////////////////
 
-
+            // media fix
+            $(".picture_holder_4").css({
+                "height":"300px",
+                "width":"700px",
+                "background-color":"white",
+                "margin-top":"60%",
+                "margin-left":"70%",
+                "background-size":"500px 350px",
+                "background-position":"60 00"
+            }).hide()
+            
+            {
+              if(devices[0] === "xs"){
+                    $(".picture_holder_1").css({
+                        "margin-top":"50%"
+                    }).hide()
+                    $(".picture_holder_2").hide()
+                    $(".picture_holder_3").hide()
+                    $(".picture_holder_4").show()
+              }
+              
+              else if(devices[0] === "sm"){
+                
+              }
+              
+              else if(devices[0] === "md"){
+                
+              }
+              
+              else if(devices[0] === "lg"){
+                
+              }
+            }
+            ///////////////////////////////////////////////////////////////////
+            // basically what you want to have here is everything show in vertical fashion if its on a phone
+            //  picture holder 4 is for one display of the page
+            ///////////////////////////////////////////////////////////////////
 
             // position fix
             $("body > *").css({
@@ -488,6 +526,10 @@
     </div>
     <div class = "picture_holder_3 shape">
         <div class = "pointer shape">
+        </div>
+    </div>
+    <div class = "picture_holder_4 shape">
+        <div class = "sign shape">
         </div>
     </div>
   </div>
