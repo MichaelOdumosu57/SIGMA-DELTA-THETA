@@ -1,4 +1,8 @@
-<html lang = "en" charset = "windows-1252">
+
+<!--home page is now responsive-->
+
+
+<html lang = "en" charset = "UTF-8">
 
   <!-- required libraries to help make the website work, the src is the path name, to make sure it is retrivied from their proper folders -->
   <head>
@@ -17,6 +21,7 @@
     <script src="./bootstrap.min.js"></script>
     <script src="./dimension_parser.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=.21">
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./sdt.css">
 
@@ -56,9 +61,10 @@
       $(document).ready(function() {
 
             // selector for one page
+            {
             $("body :not([id])").attr("id","index")
 
-
+            }
             ////////////////////////////////////////////////////////////////////
             //places a sticker for classification of the items in the webpage
             ////////////////////////////////////////////////////////////////////
@@ -77,11 +83,11 @@
       {
             var nav_array = ["Home","Events","Story","Foundation","Settings","Join"]
             $("#index.nav_container").css({
-              "background-color": "yellow",
+               "background-color": "yellow",
                "margin-top":"12em",
                "right":"0",
                "opacity":1,
-               "width":browser_window.outerWidth *.95,
+               "width":browser_window.outerWidth *.93,
                "height":"6em",
                "position":"absolute "
             }).append("<div class = menu_items ><h2>Home</h2></div>")
@@ -180,7 +186,7 @@
             "margin-left":"1.5%",
             "margin-top" :".5em",
             "border-radius":"500px",
-            "background-color": "yellow",
+            "background-color": "yellow"
 
           })
 
@@ -396,12 +402,7 @@
           var thr = 0;
           function reappear(){
 
-            // $(".picture_holder_1").css(holder_array[fst],4000)
-            // $(".picture_holder_2").css(holder_array[snd],4000)
-            // $(".picture_holder_3").css(holder_array[thr],4000)
-            // $(".picture_holder_1").css("margin-left",margin_left_info[fst][0])
-            // $(".picture_holder_2").css("margin-left",margin_left_info[snd][0])
-            // $(".picture_holder_3").css("margin-left",margin_left_info[thr][0])
+
             $(".picture_holder_1").css("background-image",margin_left_info[fst][1])
             $(".picture_holder_2").css("background-image",margin_left_info[snd][1])
             $(".picture_holder_3").css("background-image",margin_left_info[thr][1])
@@ -412,9 +413,6 @@
               snd = 2
               thr = 0
               fst = 1
-              // $(".picture_holder_1").append($(".trapezoid"))
-              // $(".picture_holder_2").append($(".cut-diamond"))
-              // $(".picture_holder_3").append($(".pointer"))
 
             }
             else if(fst == 1){
@@ -422,18 +420,14 @@
               thr = 1
               fst = 2
 
-              // $(".picture_holder_1").append($(".pointer"))
-              // $(".picture_holder_2").append($(".trapezoid"))
-              // $(".picture_holder_3").append($(".cut-diamond"))
+
 
             }
             else if(fst == 2) {
               snd = 1
               thr = 2
               fst = 0
-              // $(".picture_holder_1").append($(".cut-diamond"))
-              // $(".picture_holder_2").append($(".pointer"))
-              // $(".picture_holder_3").append($(".trapezoid"))
+
 
 
             }
@@ -441,7 +435,7 @@
               if(devices[0] === "lg"){
                 go_away(200,0)
               }
-              // setTimeout(2,go_away,2000,0)
+              
 
         }
 
@@ -456,13 +450,15 @@
             // media fix
             $(".picture_holder_4").css({
                 "height":"300px",
-                "width":"700px",
+                "width":"0px",
                 "background-color":"white",
                 "margin-top":"60%",
                 "margin-left":"70%",
                 "background-size":"500px 350px",
                 "background-position":"60 00"
             }).hide()
+            
+            $(".heading").hide()
             
             {
               if(devices[0] === "xs"){
@@ -471,18 +467,265 @@
                     }).hide()
                     $(".picture_holder_2").hide()
                     $(".picture_holder_3").hide()
-                    $(".picture_holder_4").show()
+                    $(".picture_holder_4").css({
+                        "width":"1200px",
+                        "margin-left":"30%",
+                        "margin-top":"100%"
+                    }).show().append("<h1 class = 'letters'> &#931;</h1>")
+                    
+
+                    
+
+                    
+                    // var some_home_info = $(".container:first").html()
+                    // console.log(some_home_info)
+                    // $(".container:first").remove();
+                    
+                    // $(".footers").before(some_home_info)
+                    // $(".footers").before("<div class = 'container'></div>")
+                    // // $("div:has('.shape')").wrapAll($(".container:first"))
+                    // $(".container:first").append($("div:has('.shape')"))
+                    
+                    $(".nav_container").css({
+                        "width":"2400px",
+                        "margin-left":"20px"
+                    }).hide()
+                    
+                    $(".solo_group").css({
+                        "color":"white",
+                        "font-size":"5em",
+                        "width":text_dimension($(".solo_group"))
+                    })
+                    
+                    $(".footers").css({
+                        "margin-left":"7%"
+                    })
+                    // var letters = $("#index.group_name").html()
+                    // $("#index.group_name").remove();
+                    // $(".picture_holder_1").before(letters)
+                    // $(".container").pretty_print({
+                    //     objects:$(".solo_group")
+                    // })
+                    
+                    $("#index.group_name").css({
+                        "background-color":"black",
+                        "border-radius":"0px",
+                        "width":"1500px",
+                        "height":"300px",
+                        "margin-top":"5%"
+                    })
+
+                    $("#index.group_name").pretty_print({
+                        objects:$(".solo_group"),
+                        x_spacing: "2em",
+                        indent: "20em"
+                    })
+                    
+                    $(".letters").css({
+                        "font-size":"33em",
+                        "width":text_dimension($(".letters")),
+                        "margin-top":"-400px",
+                        "margin-left":"50px"
+                        
+                    }).adv_clone(3)
+                    
+                    $(".picture_holder_4").pretty_print({
+                        objects:$(".letters"),
+                        x_spacing: "30em"
+                    })
+                    
+                    $(".letters").eq(1).html("&#916;")
+                    $(".letters").eq(2).html("&#920;")
+                    
+                    $(".item > img").css({
+                    	"height":$(".picture_holder_4").css("height"),
+                        "width":$(".picture_holder_4").css("width")
+                    })
+                    
+                    
               }
               
               else if(devices[0] === "sm"){
+                  
+                    $(".picture_holder_1").css({
+                        "margin-top":"50%"
+                    }).hide()
+                    $(".picture_holder_2").hide()
+                    $(".picture_holder_3").hide()
+                    $(".picture_holder_4").css({
+                        "width":"1200px",
+                        "margin-left":"20%",
+                        "margin-top":"50%"
+                    }).show().append("<h1 class = 'letters'> &#931;</h1>")
+                    
+
+                    
+
+                    
+                    // var some_home_info = $(".container:first").html()
+                    // console.log(some_home_info)
+                    // $(".container:first").remove();
+                    
+                    // $(".footers").before(some_home_info)
+                    // $(".footers").before("<div class = 'container'></div>")
+                    // // $("div:has('.shape')").wrapAll($(".container:first"))
+                    // $(".container:first").append($("div:has('.shape')"))
+                    
+                    $(".nav_container").css({
+                        "width":"2400px",
+                        "margin-left":"20px"
+                    }).hide()
+                    
+                    $(".solo_group").css({
+                        "color":"white",
+                        "font-size":"5em",
+                        "width":text_dimension($(".solo_group"))
+                    })
+                    
+                    $(".footers").css({
+                        "margin-left":"7%"
+                    })
+                    // var letters = $("#index.group_name").html()
+                    // $("#index.group_name").remove();
+                    // $(".picture_holder_1").before(letters)
+                    // $(".container").pretty_print({
+                    //     objects:$(".solo_group")
+                    // })
+                    
+                    $("#index.group_name").css({
+                        "background-color":"black",
+                        "border-radius":"0px",
+                        "width":"1500px",
+                        "height":"300px",
+                        "margin-top":"5%"
+                    })
+
+                    $("#index.group_name").pretty_print({
+                        objects:$(".solo_group"),
+                        x_spacing: "2em",
+                        indent: "20em"
+                    })
+                    
+                    $(".letters").css({
+                        "font-size":"33em",
+                        "width":text_dimension($(".letters")),
+                        "margin-top":"-400px",
+                        "margin-left":"50px"
+                        
+                    }).adv_clone(3)
+                    
+
+                    
+                    $(".picture_holder_4").pretty_print({
+                        objects:$(".letters"),
+                        x_spacing: "30em"
+                    })
+                    
+                    $(".letters").eq(1).html("&#916;")
+                    $(".letters").eq(2).html("&#920;")
+                    
+                    $(".item > img").css({
+                    	"height":$(".picture_holder_4").css("height"),
+                        "width":$(".picture_holder_4").css("width")
+                    })
+                    
+                    
+                    
+                    
                 
               }
               
               else if(devices[0] === "md"){
+                    $(".picture_holder_1").css({
+                        "margin-top":"50%"
+                    }).hide()
+                    $(".picture_holder_2").hide()
+                    $(".picture_holder_3").hide()
+                    $(".picture_holder_4").css({
+                        "width":"1200px",
+                        "margin-left":"15%",
+                        "margin-top":"40%"
+                    }).show().append("<h1 class = 'letters'> &#931;</h1>")
+                    
+
+                    
+
+                    
+                    // var some_home_info = $(".container:first").html()
+                    // console.log(some_home_info)
+                    // $(".container:first").remove();
+                    
+                    // $(".footers").before(some_home_info)
+                    // $(".footers").before("<div class = 'container'></div>")
+                    // // $("div:has('.shape')").wrapAll($(".container:first"))
+                    // $(".container:first").append($("div:has('.shape')"))
+                    
+                    $(".nav_container").css({
+                        "width":"2400px",
+                        "margin-left":"20px"
+                    }).hide()
+                    
+                    $(".solo_group").css({
+                        "color":"white",
+                        "font-size":"5em",
+                        "width":text_dimension($(".solo_group"))
+                    })
+                    
+                    $(".footers").css({
+                        "margin-left":"7%"
+                    })
+                    // var letters = $("#index.group_name").html()
+                    // $("#index.group_name").remove();
+                    // $(".picture_holder_1").before(letters)
+                    // $(".container").pretty_print({
+                    //     objects:$(".solo_group")
+                    // })
+                    
+                    $("#index.group_name").css({
+                        "background-color":"black",
+                        "border-radius":"0px",
+                        "width":"1500px",
+                        "height":"300px",
+                        "margin-top":"5%"
+                    })
+
+                    $("#index.group_name").pretty_print({
+                        objects:$(".solo_group"),
+                        x_spacing: "2em",
+                        indent: "20em"
+                    })
+                    
+                    $(".letters").css({
+                        "font-size":"33em",
+                        "width":text_dimension($(".letters")),
+                        "margin-top":"-400px",
+                        "margin-left":"50px"
+                        
+                    }).adv_clone(3)
                 
+                    $(".picture_holder_4").pretty_print({
+                        objects:$(".letters"),
+                        x_spacing: "30em"
+                    })
+                    
+                    $(".letters").eq(1).html("&#916;")
+                    $(".letters").eq(2).html("&#920;")
+                    
+                    $(".item > img").css({
+                    	"height":$(".picture_holder_4").css("height"),
+                        "width":$(".picture_holder_4").css("width")
+                    })
               }
               
               else if(devices[0] === "lg"){
+                  
+                  $(".heading").show().css({
+                       "margin-top":"2em"
+                  })
+                  $("body").pretty_print({
+                    objects: $(".heading"),
+                    indent:"55em"
+                  })
                 
               }
             }
@@ -512,8 +755,11 @@
   <div class = "sub_menu">
     <div class = "yellow_circle"></div>
   </div>
+  <img src = "./photos/sigma.png" class = "heading">
+  <img src = "./photos/delta.png" class = "heading">
+  <img src = "./photos/theta.png" class = "heading">
   <div class = "container">
-    <div  class = "nav_container well"></div>
+    <div  class = "nav_container "></div>
     <div class  = "menu_holder"></div>
     <div  class = "group_name"></div>
     <div class = "picture_holder_1 shape">
@@ -528,11 +774,54 @@
         <div class = "pointer shape">
         </div>
     </div>
-    <div class = "picture_holder_4 shape">
-        <div class = "sign shape">
-        </div>
-    </div>
+    
+
+
   </div>
+  <!------------------------------------------------>
+        
+<div class="container"  >
+
+  
+<div id="myCarousel" class="carousel slide picture_holder_4 shape" data-ride="carousel" style ="width:800px; height:200px ; position:absolute; margin-left:260px; margin-top:-200px;" >
+    
+    <!-- Indicators -->
+    <!--<ol class="carousel-indicators">-->
+    <!--  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+    <!--  <li data-target="#myCarousel" data-slide-to="1"></li>-->
+    <!--  <li data-target="#myCarousel" data-slide-to="2"></li>-->
+    <!--</ol>-->
+  
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox"  style = "margin:top:200px">
+      <div class="item active">
+        <img src="./photos/a.jpeg" alt="jokes 1" >
+      </div>
+  
+      <div class="item">
+        <img src="./photos/d.jpeg" alt="jokes 2" >
+        <!--hi-->
+      </div>
+      
+      <div class="item">
+        <img src="./photos/b.jpeg" alt="jokes 3" >
+      </div>
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div><!-- corousel end -->
+  
+
+</div>
+<!--------------------------------------------------------->
   <div class="container footers" style = "position:absolute; ">
       <div class="well web_colors"  style ="height: 20.750em; width:89.922em ;  text-align:center; margin-top:55em;"   >
             2017 Sigma Delta Theta inc.
@@ -551,6 +840,7 @@
             </div>
       </div>
   </div>
+  <div class = "navbar-brand"></div>
 
 </body>
 </html>
