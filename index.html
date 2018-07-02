@@ -1,5 +1,5 @@
 
-<!-- mob navigatiion visuals functionals, now to work with the interscreen animation-->
+<!--  index screen is finished on all sides now we need a template-->
 
 
 <html lang = "en" charset = "UTF-8">
@@ -175,7 +175,7 @@
             "height":"8em",
             "right":"100em",
             "margin-left":browser_window.outerWidth * .8,
-            "margin-top":"3.5%",
+            "margin-top":"10%",
             "-moz-border-top-left-radius": " 500px 500px;",
             "opacity":".8"
           }).hide()
@@ -186,7 +186,8 @@
             "margin-left":"1.5%",
             "margin-top" :".5em",
             "border-radius":"500px",
-            "background-color": "yellow"
+            "background-color": "yellow",
+            "z-index":"10"
 
           })
 
@@ -198,12 +199,41 @@
           })
 
 
-
+              
+              function bottom_stop(){
+                  if($("window").scrollTop(539)){
+                    window.scrollTop = 539
+                  }
+              }
+        
           $(".menu_items").click(function(event){
+              
+              $(window).scroll(bottom_stop)
               $("body > :not(.sub_menu)").css({
                 "opacity":".2"
               })
-              var by_one = $.map($(".sub_menu"),function(show){
+              $("body > :not(.sub_menu)")
+              var by_one = $.map($(".sub_menu"),function(show,index){
+                  if(index == 1){
+                      $(show).css({
+                          "left":"-95em",
+                          "top":"-50em"
+                      }).rotate(270)
+                  }
+                  
+                  else if(index == 2){
+                      $(show).css({
+                          "left":"-95em",
+                          "top":"60.5%"
+                      }).rotate(180)
+                  }
+                  else if(index == 3){
+                      $(show).css({
+                          "left":"-55.5%",
+                          "top":"170.5%",
+                          
+                      }).rotate(90)
+                  }
                   $(show).show()
                   return $(show)
               });
@@ -212,7 +242,7 @@
 
 
               $(".sub_menu:first").animate({
-                "margin-left":"0"
+                "margin-left":"20em"
               },1000,a(0))
 
               function a(b){
@@ -221,15 +251,17 @@
                   return
                 }
                 console.log(b)
-                $(".sub_menu").eq(b).delay(b*300).animate({
-                  "margin-left":"0"
+                $(".sub_menu").eq(b).animate({
+                  
+                  "margin-top": b == 1 ? "47em" : b == 3 ? "-29em" : undefined
+                  
                 },1000,a(b))
               }
 
           })
 
-
-
+        
+          
         }
             ////////////////////////////////////////////////////////////////////
             // sub menu controls sub memu options when one is chosen
@@ -516,23 +548,24 @@
                         
                         $(".mob_menu_bars").adv_clone(3)
                         
-                        $(".nav_container").click(function(event){
                             $(".pretty_0").css({
                             	"margin":"80px",
                             	"margin-left":"-2500px",
                             	"height":"10em",
                             	"width":"80em",
                             	"background-image":"linear-gradient(180deg,grey,black)",
-                            })
+                            }).hide()
                             
                             $(".pretty_0 > h2").css({
                                 "background-color":"none",
                                 "text-align":"center",
                                 "font-size":"3em"
                             })
+                        $(".nav_container").click(function(event){
+                            $(".pretty_0").fadeToggle()
                         })
                         
-                        $(".nav_container").trigger("click")
+                        
                     
                     }
                     //////////////////////////////////////////
@@ -695,7 +728,11 @@
                             "background-color":"black",
                             "margin-left":"-7.9em",
                             "border":"2px solid grey"
-                        }).append("<div class = 'mob_menu_bars'></div>")
+                        }).show().append("<div class = 'mob_menu_bars'></div>")
+                        
+                        $(".menu_holder").css({
+                            "width" :$(".nav_container").css("width")
+                        })
                         
                         $(".mob_menu_bars").css({
                             "height":.1 * numberParse($(".nav_container").css("height")),
@@ -709,23 +746,25 @@
                         
                         $(".mob_menu_bars").adv_clone(3)
                         
-                        $(".nav_container").click(function(event){
                             $(".pretty_0").css({
                             	"margin":"80px",
-                            	"margin-left":"-2500px",
+                            	"margin-left":"-1900px",
                             	"height":"10em",
                             	"width":"80em",
                             	"background-image":"linear-gradient(180deg,grey,black)",
-                            })
+                            }).hide()
                             
                             $(".pretty_0 > h2").css({
                                 "background-color":"none",
                                 "text-align":"center",
                                 "font-size":"3em"
                             })
+                        $(".nav_container").click(function(event){
+                            $(".pretty_0").fadeToggle()
+                            
                         })
                         
-                        $(".nav_container").trigger("click")
+                        
                         
                     //////////////////////////////////////////
                     //controls mobile nav animation
@@ -819,7 +858,64 @@
                     	"height":$(".picture_holder_4").css("height"),
                         "width":$(".picture_holder_4").css("width")
                     })
+                    
+                  //mobile nav animation
+                        $(".nav_container").css({
+                            "width":"150px",
+                            "height":"150px",
+                            "left":"108em",
+                            "margin-top":"0px",
+                            "z-index":"20",
+                            "background-color":"black",
+                            "margin-left":"3em",
+                            "border":"2px solid grey"
+                        }).show().append("<div class = 'mob_menu_bars'></div>")
+                        
+                        $(".menu_holder").css({
+                            "width" :$(".nav_container").css("width")
+                        })
+                        
+                        $(".mob_menu_bars").css({
+                            "height":.1 * numberParse($(".nav_container").css("height")),
+                            "width":.8 * numberParse($(".nav_container").css("width")),
+                            "background-color":"red",
+                            "top":"1em",
+                            "margin-left":"1em",
+                            "margin-top":"2em",
+                            "margin-bottom":"-.5em"
+                        })
+                        
+                        $(".mob_menu_bars").adv_clone(3)
+                        
+                            $(".pretty_0").css({
+                            	"margin":"80px",
+                            	"margin-left":"-2250px",
+                            	"height":"10em",
+                            	"width":"80em",
+                            	"background-image":"linear-gradient(180deg,grey,black)",
+                            }).hide()
+                            
+                            $(".pretty_0 > h2").css({
+                                "background-color":"none",
+                                "text-align":"center",
+                                "font-size":"3em"
+                            })
+                        
+                        $(".nav_container").click(function(event){
+                            
+                            $(".pretty_0").fadeToggle()
+
+                        })
+                        
+                        
+                        
+                    //////////////////////////////////////////
+                    //controls mobile nav animation
+                    //////////////////////////////////////////
+                    
               }
+              
+              
               
               else if(devices[0] === "lg"){
                   
@@ -831,6 +927,10 @@
                     indent:"55em"
                   })
                 
+              }
+              
+              if(devices[0] !== "lg"){
+                $(".menu_items").unbind("click")
               }
             }
             ///////////////////////////////////////////////////////////////////
