@@ -1,6 +1,6 @@
 
-<!--  templates for info now to work on design-->
-
+<!--  finish foundation animations-->
+<!--remember to git jquery pretty print-->
 
 <html lang = "en" charset = "UTF-8">
 
@@ -16,7 +16,7 @@
     <script src="./jquery_carousel.js"></script>
     <script src="./jquery_michael_toggle.js"></script>
     <script src="./site_map_instruction.js"></script>
-    <script src="./navigation.js"></script>
+    
     <script src="./footer.js"></script>
     <script src="./bootstrap.min.js"></script>
     <script src="./dimension_parser.js"></script>
@@ -30,6 +30,16 @@
 
   <!-- developer use of libaries to have website act as designed -->
   <script>
+// helper function
+    {
+        function jsUcfirst(string)
+        {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    }
+//////////////////////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////////////////////
   // helper function
 {
   function text_dimension(string_selector)
@@ -82,7 +92,7 @@
 
 
             // editing the menu objects
-      {
+        {
             var nav_array = ["Home","Events","Story","Foundation","Settings","Join"]
             $(".nav_container").css({
                "background-color": "yellow",
@@ -179,6 +189,8 @@
             "margin-left":browser_window.outerWidth * .8,
             "margin-top":"10%",
             "-moz-border-top-left-radius": " 500px 500px;",
+            "-webkit-border-top-left-radius": " 500px 500px;",
+            "border-top-left-radius": " 500px 500px;",
             "opacity":".8"
           }).hide()
 
@@ -718,6 +730,57 @@
               if(devices[0] !== "lg"){
                 $(".menu_items").unbind("click")
               }
+              
+              //foundation media fix
+                {
+                    // helper function
+                    
+                        function media_foundation(){
+                            if(devices[0] === "xs"){
+                                return["15em",
+                                        "15em",
+                                        2.85 * browser_window.outerWidth,
+                                        "60em",
+                                        2.75 * browser_window.outerWidth,
+                                        "57em",
+                                        2.6 * browser_window.outerWidth]
+                            }
+                            if(devices[0] === "sm"){
+                                return ["15em",
+                                        "10em",
+                                        1.30 * browser_window.outerWidth,
+                                        "40em",
+                                        1.27 * browser_window.outerWidth,
+                                        "37em",
+                                        1.50 * browser_window.outerWidth,
+                                        "scroll"]
+                            }
+                            if(devices[0] === "md"){
+                                return ["15em",
+                                        "10em",
+                                        1.10 * browser_window.outerWidth,
+                                        "40em",
+                                        1.07 * browser_window.outerWidth,
+                                        "37em",
+                                        1.60 * browser_window.outerWidth,
+                                        "scroll"]
+                            }
+                            if(devices[0] === "lg"){
+                                return ["5em",
+                                        "5em",
+                                        .85 * browser_window.outerWidth,
+                                        "60em",
+                                        .83 * browser_window.outerWidth,
+                                        "57em",
+                                        .8 * browser_window.outerWidth,
+                                        "hidden"]
+                            
+                            }
+                        }
+                    //////////////////////////////////////////////////////////////
+                    //this function will help avoid repetition in adjusted the toggle animations for the foundation
+                    //////////////////////////////////////////////////////////////
+                }
             }
             ///////////////////////////////////////////////////////////////////
             // basically what you want to have here is everything show in vertical fashion if its on a phone
@@ -726,9 +789,14 @@
             
             // memory placement
             {
+                var in_front = 6;
+                var induction_execute = false;
+                var writing_dimension = []
+
                 
                 // pledge
                 {
+                    
                     $(".pledge").css({
                         "margin-top":"25em",
                         "margin-left":"8em",
@@ -738,6 +806,66 @@
                         "border":"5px solid rgb(242, 12, 12)",
                         
                     })
+                    
+
+                    
+                    $(".pledge").click(function(event){
+
+                        if(event.currentTarget.classList[0] != $(this).context.classList[0]){
+                            
+                            return
+                        }
+                        if(induction_execute == false){
+                            $(".pledge .writing_texts").text("I do hereby affirm that I will be committed and dedicated to the SIGMA DELTA THETA fraternity organization I will devote my time and talents I will wear this pledge badge with pride and dignity and honor I will respect the organization and its members for they are now my family and will be treated as such to all this I pledge my sacred honor ")
+                            in_front += 1
+                            $(this).animate({
+                                "margin-top":media_foundation()[0],
+                                "margin-left":media_foundation()[1],
+                                "width":media_foundation()[2],
+                                "height":media_foundation()[3],
+                                "background-color":"rgba(242, 12, 12,.4)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": in_front
+                            },1500)
+                            
+                            $(".pledge > .writing").animate({
+                                "width":media_foundation()[4],
+                                "height":media_foundation()[5],
+                            },1500)
+                            
+                            $(".pledge .writing_texts").animate({
+                                "opacity":"1"
+                            },1500)
+                            induction_execute = true;
+                            
+                        }
+                        
+                        else{
+                            
+                            $(this).animate({
+                                "margin-top":"25em",
+                                "margin-left":"8em",
+                                "width":"40em",
+                                "height":"20em",
+                                "background-color":"rgb(242, 12, 12)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": 0
+                            },1500)
+                            
+                            $(".pledge > .writing").animate({
+                                "width":writing_dimension[0][0],
+                                "height":writing_dimension[0][1]
+                            },1500)
+                            
+                            $(".pledge .writing_texts").animate({
+                                "opacity":"0"
+                            },1500)
+                            induction_execute = false;
+                        }
+                        
+                    })
+                    
+                    
                 }
                 //////////////////////////////////////////////////////////////////////
                 //
@@ -747,6 +875,41 @@
                 
                 // chant
                 {
+                    txt1 = "<chants>"
+                    txt2 = "<sigma>SIGMAS! who are we!!!</sigma>"
+                    txt3 = "<oh>(OH YOU DONT KNOW !??)</oh>"
+                    txt4 = "<we>WE ARE THE BROTHERS OF THE E!!!</we>"
+                    txt5 = "<stomp>(STOMP)</stomp>"
+                    txt6 = "<fly>The Flyest of the fly !(yurrr)</fly>"
+                    txt7 = "<smooth>The (stomp) smoothest of the smooth!</smooth>"
+                    txt8 = "<smo>(SMOOOTH!)</smo>"
+                    txt9 = "<intel>The most intelligent of intelligence!</intel>"
+                    txt10 = "<you>(YOU DAM RIGHT!!)</you>"
+                    txt11 = "<every>Everybody want to be recognized</every>"
+                    txt12 = "<but>(BUT NOBODY WANT TO PUT THE WORK IN !)</but>"
+                    txt13 = "<might>We are mighty! (We are one !)</might>"
+                    txt14 = "<know>SIGMMMMAAA !!! (YOUUUU KNOWWWW!!)</know>"
+                    txt15 = "</chants>"
+                    txt_chant =  [txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9,txt10,txt11,txt12,txt13,txt14,txt15]
+                    var txt = "";
+                    txt_chant.forEach(function(text,i){
+                        txt +=  text
+                    })
+                    console.log(txt)
+                    console.log(txt1.slice(txt1.indexOf("<")+1).split(">")[0])
+                    if (window.DOMParser)
+                      {
+                      parser=new DOMParser();
+                      xmlDoc=parser.parseFromString(txt,"text/xml");
+                      }
+                    else // Internet Explorer
+                      {
+                      xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+                      xmlDoc.async=false;
+                      xmlDoc.loadXML(txt);
+                      }
+                    
+                    
                     $(".chant").css({
                         "margin-top":"25em",
                         "margin-left":"52em",
@@ -756,6 +919,74 @@
                         "border":"5px solid rgb(242, 12, 12)",
                         
                     })
+                    
+                    $(".chant").click(function(event){
+                        if(event.currentTarget.classList[0] != $(this).context.classList[0]){
+                            
+                            return
+                        }
+                        
+                        if(induction_execute == false){
+                            in_front += 1
+                            if($(".chant .writing_texts").length != 14){
+                                $(".chant .writing_texts").adv_clone(14)
+                            }
+                            txt_chant.forEach(function(text,i){
+                                if(i <= txt_chant.length - 3 ){
+
+                                    $(".chant .writing_texts").eq(i).text(xmlDoc.getElementsByTagName(txt_chant[i+1].slice(text.indexOf("<")+1).split(">")[0])[0].childNodes[0].nodeValue).css({
+                                            "text-align":"center"
+                                        }).animate({
+                                            "opacity":"1"
+                                        },1500)
+                                }
+
+                            })
+                            $(this).animate({
+                                "margin-top":media_foundation()[0],
+                                "margin-left":media_foundation()[1],
+                                "width":media_foundation()[2],
+                                "height":media_foundation()[3],
+                                "background-color":"rgba(242, 12, 12,.4)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": in_front
+                            },1500)
+                            
+                            $(".chant > .writing").scroll().css({
+                                
+                                "overflow-y":media_foundation()[7]
+                            }).animate({
+                                "width":media_foundation()[4],
+                                "height":media_foundation()[5],
+                            },1500)
+                            induction_execute = true;
+                        }
+                        
+                        else{
+                            $(this).animate({
+                                "margin-top":"25em",
+                                "margin-left":"52em",
+                                "width":"40em",
+                                "height":"20em",
+                                "background-color":"rgb(242, 12, 12)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": 0
+                            },1500)
+                            
+                            $(".chant > .writing").css({
+                                "overflow-y":"hidden"
+                            }).animate({
+                                "width":writing_dimension[1][0],
+                                "height":writing_dimension[1][1]
+                            },1500)
+                            
+                            $(".chant .writing_texts").animate({
+                                "opacity":"0"
+                            },1500)
+                            induction_execute = false;
+                        }
+                        
+                    })
                 }
                 //////////////////////////////////////////////////////////////////////
                 //
@@ -763,6 +994,21 @@
                 
                 // divine_nine
                 {
+                    divine1 = ["ALPHA PHI ALPHA","FRATERNITY","1906","CORNELL UNIVERSITY"]
+                    divine2 = ["ALPHA KAPPA ALPHA","SORORITY","1908","HOWARD UNIVERSITY"]
+                    divine3 = ["KAPPA ALPHA PSI ","FRATERNITY","1911","INDIANA UNIVERSITY"]
+                    divine4 = ["OMEGA PHI PSI","FRATERNITY","1911","HOWARD UNIVERSITY"]
+                    divine5 = ["DELTA SIGMA THETA","SORORITY","1913","HOWARD UNIVERSITY"]
+                    divine6 = ["PHI BETA SIGMA","FRATERNITY","1914","HOWARD UNIVERSITY"]
+                    divine7 = ["ZETA PHI BETA","SORORITY","1920","HOWARD UNIVERSITY"]
+                    divine8 = ["SIGMA GAMMA RHO","SORORITY","1922","BUTLER UNIVERSITY"]
+                    divine9 = ["IOTA PHI THETA","FRATERNITY","1963","MORGAN STATE UNIVERSITY"]
+                    divine_nine =  [divine1,divine2,divine3,divine4,divine5,divine6,divine7,divine8,divine9]
+                    
+                    var divine = "";
+                    console.log(divine)
+                    
+
                     $(".divine_nine").css({
                         "margin-top":"50em",
                         "margin-left":"2em",
@@ -772,6 +1018,74 @@
                         "border":"5px solid rgb(242, 12, 12)",
                         
                     })
+                    
+                    $(".divine_nine").click(function(event){
+                        if(event.currentTarget.classList[0] != $(this).context.classList[0]){
+                            
+                            return
+                        }
+                        
+                        if(induction_execute == false){
+                            if($(".divine_nine  .writing_texts").length != 9){
+                                    $(".divine_nine  .writing_texts").adv_clone(9)
+                                    divine_nine.forEach(function(div,i){
+                                        $(".divine_nine  .writing_texts").eq(i).text(div).after("<br/>")
+                                    })
+                                }
+                                
+                            in_front += 1
+                            $(this).animate({
+                                "margin-top":media_foundation()[0],
+                                "margin-left":media_foundation()[1],
+                                "width":media_foundation()[2],
+                                "height":media_foundation()[3],
+                                "background-color":"rgba(242, 12, 12,.4)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": in_front
+                            },1500)
+                            
+                            $(".divine_nine > .writing").scroll().css({
+                                "overflow-y":media_foundation()[7]
+                            }).animate({
+                                "width":media_foundation()[4],
+                                "height":media_foundation()[5],
+                            },1500)
+                            
+                            $(".divine_nine  .writing_texts").animate({
+                                "opacity":"1"
+                            },1500)
+                            induction_execute = true;
+                        }
+                        
+                        else{
+                            $(this).animate({
+                                "margin-top":"50em",
+                                "margin-left":"2em",
+                                "width":"25em",
+                                "height":"8em",
+                                "background-color":"rgb(242, 12, 12)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": 0
+                            },1500)
+                            
+                            $(".divine_nine > .writing").css({
+                                "overflow-x":"hidden",
+                                "overflow-y":"hidden"
+                                
+                            }).animate({
+                                "width":writing_dimension[2][0],
+                                "height":writing_dimension[2][1]
+                            },1500)
+                            
+                            $(".divine_nine > .writing").scrollTop(0)
+                            
+                            $(".divine_nine  .writing_texts").animate({
+                                "opacity":"0"
+                            },1500)
+                            induction_execute = false;
+                        }
+                        
+                    })
                 }
                 //////////////////////////////////////////////////////////////////////
                 //
@@ -779,6 +1093,31 @@
 
                 // greek_letters
                 {
+                    var song = ["Alpha",
+                                "Beta",
+                                "Gamma",
+                                "Delta",
+                                "Epsilon",
+                                "Zeta",
+                                "Eta",
+                                "Theta",
+                                "Iota",
+                                "Kappa",
+                                "Lambda",
+                                "Mu",
+                                "Nu",
+                                "Xi",
+                                "Omicron",
+                                "Pi",
+                                "Rho",
+                                "Sigma",
+                                "Tau",
+                                "Upsilon",
+                                "Phi",
+                                "Chi",
+                                "Psi",
+                                "Omega"]
+                                
                     $(".greek_letters").css({
                         "margin-top":"50em",
                         "margin-left":"34em",
@@ -788,6 +1127,150 @@
                         "border":"5px solid rgb(242, 12, 12)",
                         
                     })
+                    
+
+                    
+                    $(".greek_letters").click(function(event){
+                        if(event.currentTarget.classList[0] != $(this).context.classList[0]){
+                            
+                            return
+                        }
+                        
+                        if(induction_execute == false){
+                             
+                            in_front += 1
+                            $(this).animate({
+                                "margin-top":media_foundation()[0],
+                                "margin-left":media_foundation()[1],
+                                "width":media_foundation()[2],
+                                "height":media_foundation()[3],
+                                "background-color":"rgba(242, 12, 12,.4)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": in_front
+                            },1500)
+                            
+
+                            
+                            $(".greek_letters > .writing").scroll().css({
+                                "overflow-x":media_foundation()[7],
+                                "overflow-y":media_foundation()[7]
+                            }).animate({
+                                "width":media_foundation()[4],
+                                "height":media_foundation()[5],
+                            },1500)
+                            
+                            alphabet()
+                            
+                            $(".greek_letters .writing_texts").animate({
+                                "opacity":"1"
+                            },1500)
+                            
+                            induction_execute = true;
+                        }
+                        
+                        else{
+                            $(this).animate({
+                                "margin-top":"50em",
+                                "margin-left":"34em",
+                                "width":"30em",
+                                "height":"8em",
+                                "background-color":"rgb(242, 12, 12)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": 0
+                            },1500)
+                            
+                            $(".greek_letters > .writing").css({
+                                "overflow-x":"hidden",
+                                "overflow-y":"hidden"
+                                
+                            }).animate({
+                                "width":writing_dimension[3][0],
+                                "height":writing_dimension[3][1]
+                            },1500)
+
+                            $(".greek_letters .writing_texts").animate({
+                                "opacity":"0"
+                            },1500)
+                            $(".greek_letters > .writing").scrollTop(0)
+
+                            induction_execute = false;
+                        }
+                        
+                    })
+                    
+                    // helper function
+                    
+                        function alphabet(){
+                            if($(".greek_letters .writing_texts").length != 49){
+                                    $.map($(".greek_letters .writing_texts").adv_clone(50),function(lett,i){
+                                        if((i != 17 || i == 34) && i <= 24){
+                                                
+                                                lett.html("&#" +(913 + i).toString() + " " + "&#" +(913 + i + 32).toString())
+                                                lett.css({
+                                                    "font-size":"4em",
+                                                    "color":"blue"
+                                                })
+                                                console.log(lett.offset())
+                                            
+
+                                        }
+                                        // mistake on those who made the charset? or sigma just has 3 cases associated
+                                        
+                                        else if(i > 24){
+                                            lett.text(song[i-25]).css({
+                                                "color":"blue",
+                                                
+                                                "position":"relative",
+                                                
+                                            }).offset({
+                                                top: $(".greek_letters .writing_texts").eq(i-24).offset()["top"],
+                                                left:$(".greek_letters .writing_texts").eq(i-24).offset()["left"]
+                                            })
+                                            
+                                            console.log(lett.offset())
+                                        }
+                                        if(i ==17 ){
+                                            lett.remove()
+                                        }
+                                        
+
+                                        // length need to be 24 becuase that empty space was removed
+
+                                    })
+                                    $.map($(".greek_letters .writing_texts"),function(lett,i){
+                                        console.log($(lett))
+                                        $(lett).css({
+                                            "width":i > 23 ?  text_dimension($(".greek_letters .writing_texts").eq(i-24)) : text_dimension($(lett))
+                                        })
+
+                                    })
+                                    $(".greek_letters > .writing").pretty_print({
+                                        objects:$(".greek_letters .writing_texts:lt(24)"),
+                                        pretty_container_width:media_foundation()[6],
+                                        x_spacing:"5em",
+                                        y_spacing:"0em"
+                                    })
+                                    $(".greek_letters > .writing").pretty_print({
+                                        objects:$(".greek_letters .writing_texts:gt(23)"),
+                                        pretty_container_width:media_foundation()[6],
+                                        x_spacing:"5em",
+                                        y_spacing:"3em"
+                                    })
+                                    $(".greek_letters .writing_texts").eq(24).css({
+                                        "margin-top":"-62em",
+                                        
+                                            
+                                        })
+                                    
+                                 }
+                        }
+                    
+                    //////////////////////////////////////////////////////////////////////
+                    // this function helps pretty print know how wide the container it will pretty
+                    // print the objects in
+                    //////////////////////////////////////////////////////////////////////
+                    
+                             
                 }
                 //////////////////////////////////////////////////////////////////////
                 //
@@ -795,6 +1278,61 @@
                 
                 // greek_terms
                 {
+                    terms = ["Divine Nine",
+                             "Pledged",
+                             "Pafer",
+                             "Process/Intake",
+                             "Dean of Pledges(DP)/Intake Coordinator",
+                             "Assistant Dean of Pledges(ADP) ",
+                             "Big Brother/Big Sister",
+                             "Line",
+                             "Line name",
+                             "Line Brother/Line Sister(LS/LB)",
+                             "Set/Study Session",
+                             "Lock up Link up",
+                             "Old Head",
+                             "Deference",
+                             "Deference Call",
+                             "Call",
+                             "Stroll",
+                             "Charged Up",
+                             "Solo Ace",
+                             "Induction",
+                             "Neophyte",
+                             "Prophyte",
+                             "Pendant",
+                             "Collecting Sands",
+                             "Paraphenalia"]
+                             
+                    definitions = ["A term used to describe all the NPHC (National Pan-Hellenic Council)                       organizations",
+                                   "A rite of passage, a test of ones abilities to think about their actions and their physical endurance, legal and illegal at the same time. This is good and its done without hazing",
+                                   "The easiest way to enter the organization going the way of the founders of the organization the legal way. Be aware this way might cause alienation",
+                                   "A term used to describe how one is coming into the organization pledge or pafer",
+                                   "The person who is supposed to ensure that you are safe and getting the proper information during your process/intake",
+                                   "The person who is going to be the DP next intake and is learning from the DP",
+                                   "Everyone who came into the organization before you and who saw you during your process/intake",
+                                   "A term used to describe all people who came in the organization with you",
+                                   "The individual name one is given during their process",
+                                   "A term used to describe  individual people who came into the organization with you",
+                                   "A location where one meets with a DP,ADP and Big Brother/Big Sister. One ususally meets with these people late at night however one can meet during the day also. The location is only known to you and the people involved in the intake",
+                                   "A term used to describe an action that requires one to grab the arm of another person trying to enter the organization to form a chain link with arms",
+                                   "A person that has been in the organization for over 10+ years",
+                                   "Giving respect to the members that come before you and something that you must show",
+                                   "A sound or chant for individuals that came before you. As a pledge, you must remember each DC from the line before you",
+                                   "a sound that each organization memebers say to represent the organization",
+                                   "Unified step routine to advertise the organization",
+                                   "A set of questions asked to see which process a peron went through to enter the organization",
+                                   "A person that joined the organization through the pledging process alone. They receive the most respect and are usually quick temepred",
+                                   "This is an event where a pledge rises in rank as a full brother/sister of the organization ",
+                                   "a new member of the organization",
+                                   "term used to refer to an older brother/sister ",
+                                   "a necklace that holds sounds from your induction process, only given inducted members",
+                                   "A term used to describe used tok describe the last part of the induction process",
+                                   "different items of greek clothing that are worn by members and pledges"
+                                   
+                        ]
+                        
+                        
                     $(".greek_terms").css({
                         "margin-top":"50em",
                         "margin-left":"70em",
@@ -804,6 +1342,87 @@
                         "border":"5px solid rgb(242, 12, 12)",
                         
                     })
+                    
+                    $(".greek_terms").click(function(event){
+                        if(event.currentTarget.classList[0] != $(this).context.classList[0]){
+                            
+                            return
+                        }
+                        
+                        if(induction_execute == false){
+                            if($(".greek_terms .writing_texts").length != 25){
+                                $.map($(".greek_terms .writing_texts").adv_clone(25),function(egs,i){
+                                    egs.text(terms[i]+ "-"+ definitions[i])
+                                })
+                                
+                            }
+                            in_front += 1
+                            $(this).animate({
+                                "margin-top":media_foundation()[0],
+                                "margin-left":media_foundation()[1],
+                                "width":media_foundation()[2],
+                                "height":media_foundation()[3],
+                                "background-color":"rgba(242, 12, 12,.4)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": in_front
+                            },1500)
+                            
+                            $(".greek_terms > .writing").scroll().css({
+                                "overflow-y":"scroll"
+                            }).animate({
+                                "width":media_foundation()[4],
+                                "height":media_foundation()[5],
+                                
+                            },1500)
+                            $(".greek_terms  .writing_texts").animate({
+                                "opacity":"1"
+                            },1500)
+                            induction_execute = true;
+                        }
+                        
+                        else{
+                            $(this).animate({
+                                "margin-top":"50em",
+                                "margin-left":"70em",
+                                "width":"25em",
+                                "height":"8em",
+                                "background-color":"rgb(242, 12, 12)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": 0
+                            },1500)
+                            
+                            $(".greek_terms > .writing").css({
+                                "overflow-y":"hidden",
+                                
+                            }).animate({
+                                "width":writing_dimension[4][0],
+                                "height":writing_dimension[4][1],
+                                
+                            },1500)
+                            
+                            $(".greek_terms > .writing").scrollTop(0)
+
+                            
+                            $(".greek_terms  .writing_texts").animate({
+                                "opacity":"0"
+                            },1500)
+                            
+                            
+                            
+                            induction_execute = false
+                        }
+                        
+                        
+                        
+                    })
+                    
+                    //helper function
+                        function terms_greek(){
+                            $(".greek_terms  .writing_texts").empty()
+                        }
+                        //////////////////////////////////////////////////////////////////////
+                        //this function helps greek terms remove the terms properly
+                        //////////////////////////////////////////////////////////////////////
                 }
                 //////////////////////////////////////////////////////////////////////
                 //
@@ -821,6 +1440,66 @@
                         "border":"5px solid rgb(242, 12, 12)",
                         
                     })
+                    
+
+
+                    $(".foundation").click(function(event){
+                        if(event.currentTarget.classList[0] != $(this).context.classList[0]){
+                            
+                            return
+                        }
+                        
+                        if(induction_execute == false){
+                            $(".foundation .writing_texts").text("The unique chapter of the Sigma Delta Theta incorporated was founded by the brothers of the E on that very day in November 2017. The brothers of the E sat down and formed Sigma Delta Theta incorporated to show the youth of today that there is a much better way to deal with the free time on their hands or if they feel like they need a place to belong to or if they need to be a part of something important. We aim to give back to the community we aim to be sucessful not only as a fraternity but as a brotherhood. Success is key")
+                            in_front += 1
+                            $(this).animate({
+                                "margin-top":media_foundation()[0],
+                                "margin-left":media_foundation()[1],
+                                "width":media_foundation()[2],
+                                "height":media_foundation()[3],
+                                "background-color":"rgba(242, 12, 12,.4)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": in_front,
+                                "border-radius":"0px",
+                            },1500)
+                            
+                            $(".foundation > .writing").animate({
+                                "width":media_foundation()[4],
+                                "height":media_foundation()[5],
+                                "border-radius":"0px",
+                            },1500)
+                            
+                            $(".foundation  .writing_texts").animate({
+                                "opacity":"1"
+                            })
+                            induction_execute = true;
+                        }
+                        
+                        else{
+                            $(this).animate({
+                                "margin-top":"60em",
+                                "margin-left":"30em",
+                                "width":"25em",
+                                "height":"8em",
+                                "border-radius":"100px",
+                                "background-color":"rgb(242, 12, 12)",
+                                "border":"5px solid rgb(242, 12, 12)",
+                                "z-index": 0
+                            },1500)
+                            
+                            $(".foundation > .writing").animate({
+                                "width":writing_dimension[4][0],
+                                "height":writing_dimension[4][1],
+                                "border-radius":"100px",
+                            },1500)
+                            
+                            $(".foundation  .writing_texts").animate({
+                                "opacity":"0"
+                            },1500)
+                            induction_execute = false;
+                        }
+                        
+                    })
                 }
                 //////////////////////////////////////////////////////////////////////
                 //
@@ -828,6 +1507,15 @@
                 
                 $(".info").append("<div class = 'writing'></div>")
                 $.map($(".info"),function(writings,index){
+                    var foundation_title;
+                    if( $(".info").eq(index)["0"].classList[0].indexOf("_") == -1){
+                        foundation_title = $(".info").eq(index)["0"].classList[0].toUpperCase()
+                    }
+                    
+                    else{
+                        foundation_title = $(".info").eq(index)["0"].classList[0].split("_")
+                        foundation_title = foundation_title[0].toUpperCase() + " " + foundation_title[1].toUpperCase()
+                    }
                     $(".writing").eq(index).css({
                         "width":.95 *numberParse($(".info").eq(index).css("width")),
                         "height":.95 *numberParse($(".info").eq(index).css("height")),
@@ -836,6 +1524,12 @@
                         "margin-top":"-1.2em",
                         "margin-left":"-.7em",
                         "opacity":".95"
+                    }).append("<h1 class = 'txt_title'>" + jsUcfirst(foundation_title)  +"</h1><h2 class = 'writing_texts'></h2>")
+                    writing_dimension.push([$(".writing").eq(index).css("width"),$(".writing").eq(index).css("height")])
+                
+                    $(".txt_title").css({
+                        "font-weight":"900",
+                        "text-align":"center"
                     })
                     
                     if(index >= 2){
@@ -855,9 +1549,17 @@
                         })
                     }
                 })
+                $(".writing_texts").css({
+                    "text-align":"center"
+                })
+                console.log(writing_dimension)
+
             }
             //////////////////////////////////////////////////////////////////////
             // greek req. to memorize will be place on this page, placement and animation will be dealt with here
+            // var in_front is used so that the induction info  is available at the front of the page when clicked
+            // wrinting dimension is for the dimiension of text holders in the info wells used to take care of certain resizing problems
+            // media responsiveness will have to go inside the tags not a universal way developed to deal with the situation
             //////////////////////////////////////////////////////////////////////
 
             // position fix
@@ -877,6 +1579,7 @@
             ////////////////////////////////////////////////////////////////////
        });
   </script>
+  <script src="./navigation.js"></script>
 <body>
 
   <div class = "sub_menu">

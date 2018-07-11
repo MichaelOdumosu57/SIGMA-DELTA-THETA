@@ -24,6 +24,10 @@
                   position: absolute;
 
         }
+        .sub_menu{
+          border-top-left-radius: 500px;
+          border-bottom-left-radius: 500px;
+        }
 /*  shapes*/
 .cut-diamond {
    border-style: solid;
@@ -89,8 +93,10 @@
 
 /*  index page*/
 
+/*event page*/
 
-        #index.sub_menu{
-          border-top-left-radius: 500px;
-          border-bottom-left-radius: 500px;
-        }
+    .titulo{
+        border-bottom : 3px solid rgb(227, 227, 227)
+        
+    }
+

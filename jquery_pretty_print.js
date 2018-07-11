@@ -1,5 +1,5 @@
 
-//customization for indentation of pretty print rows
+//made an option for pretty container dimension as needed
     //capabilities : core pretty print concept in horizontal spacing
     //             : vertical reposition proper alginment
     //             :indentation, or pretty_print usuable space object
@@ -7,6 +7,7 @@
     //             : full object pretty print conept
     //             : horizontal and vertical alignment
     //             : soruce of truth for pretty print height
+    //             : developer control of container dimension
 
     //planned work
     //              :pretty object regristration
@@ -64,8 +65,8 @@ var pretty_call;
                 //this function takes a dimension and cuts it off and returns the number for use
                 //////////////////////////////////////////////////////////////
 
-            var pretty_container_width = numberParse($(this).css("width"));
-            var pretty_container_height = numberParse($(this).css("height"));
+            var pretty_container_width =  michael.pretty_container_width !== undefined ? michael.pretty_container_width : numberParse($(this).css("width"));
+            var pretty_container_height = michael.pretty_container_height !== undefined ? michael.pretty_container_height: numberParse($(this).css("height"));
             var pretty_associate = 0;
             $("body").after("<div class = 'pretty'></div>")
             if(michael.objects === undefined){
