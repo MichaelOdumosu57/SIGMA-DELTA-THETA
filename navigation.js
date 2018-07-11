@@ -22,9 +22,13 @@ var nav_holder;
 
                 //helper function
                     function window_finder(targ){
+                        if(targ.currentTarget.innerText.toLowerCase() == "home"){
                         
-                        window.location = targ.currentTarget.innerText.toLowerCase() + ".html"
-                        
+                            window.location = "index.html"
+                        }
+                        else{
+                            window.location = targ.currentTarget.innerText.toLowerCase() + ".html"
+                        }
                     }
                 ///////////////////////////////////////////////////////////////////////
                 //
@@ -34,6 +38,7 @@ var nav_holder;
                     
                     $(".menu_items").click(function(event) {
                         nav_holder = event.currentTarget.innerText.toLowerCase()
+                        
                         setTimeout(window_finder,1000,event)
 
                     })

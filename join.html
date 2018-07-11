@@ -1,5 +1,5 @@
 
-<!--  index screen is finished on all sides now we need a template-->
+<!--  this page is finsihed now to connect formspree to the submit button so this information can actually get sent to kazza's email, mobile animation taken care of as well-->
 
 
 <html lang = "en" charset = "UTF-8">
@@ -269,6 +269,131 @@
             // the event handler manipulates the delay method to help it function
             ////////////////////////////////////////////////////////////////////
 
+            //join_log
+            {
+            
+                // helper function
+                        
+                        function focal_point_width(){
+                            if(devices[0] == "xs"){
+                                return [2.9 * browser_window.outerWidth,
+                                        {
+                                    
+                                        }
+                                    ]
+                            }
+                            if(devices[0] == "sm"){
+                                return[ 1.6 * browser_window.outerWidth,
+                                    {
+                                        
+                                    }
+                                ]
+                            }
+                            if(devices[0] == "md"){
+                                return [ 1.2 * browser_window.outerWidth,
+                                    {
+                                        
+                                    }
+                                ]
+                            }
+                            if(devices[0] == "lg"){
+                                return [ .8 * browser_window.outerWidth,
+                                    {
+                                        
+                                    }
+                                ]
+                            }
+                        }
+                        
+                ////////////////////////////////////////////////////////////////////
+                // this function is bulit to make my programming quicker to edit the css of the inner
+                // objects based relating css changes in the contaning object
+                ////////////////////////////////////////////////////////////////////
+                
+                    $(".join_log").css({
+                        
+                        "border":"1px solid rgb(227, 227, 227)",
+                        "height":"8em",
+                        "width": focal_point_width()[0],
+                        "margin-top":"25em",
+                        "margin-left":"10em",
+                        "z-index":"2",
+                        "position":"absolute",
+                        "border-top-left-radius": "100px",
+                        "border-top-right-radius": "100px",
+                        "background-color":"black"
+                        
+                    })
+                    
+                    $(".join_log > h1").css({
+                        "margin-top":".7em",
+                        "font-size":"3em",
+                        "text-align":"center",
+                        "color":"grey",
+                    })
+                    
+                    $(".join_form ").css({
+                        "z-index":"0",
+                        "border":"1px solid rgb(227, 227, 227)",
+                        "height":"8em",
+                        "width": focal_point_width()[0],
+                        "margin-top":"25em",
+                        "margin-left":"10em",
+                        "position":"absolute",
+                        "border-top-left-radius": "100px",
+                        "border-top-right-radius": "100px"
+                    })
+                    
+                    $(".join_form ").animate({
+                        "height":"44em",
+                        "border-bottom-left-radius": "100px",
+                        "border-bottom-right-radius": "100px"
+                        
+                    },2000)
+                    
+
+                    
+                    $(".footers").animate({
+                        "margin-top":"20em"
+                    },1000)
+                    
+                    // form
+                        {
+                            $(".first_name").css({
+                                "margin-top":"10em"
+                            })
+                            $(".last_name").css({
+                                "margin-top":"10em"
+                            })
+                            $(".age").css({
+                                "margin-top":"10em"
+                            })
+                            $(".telephone").css({
+                                "margin-top":"3em"
+                            })
+                            $(".city").css({
+                                "margin-top":"3em"
+                            })
+                            $(".submit").css({
+                                "margin-left":"52em",
+                                "margin-top":"-2.5em"
+                            })
+                            $(".joining textarea").css({
+                                "height":"10em",
+                                "width":.8 * numberParse($(".join_form").css("width")),
+                                "text-size-adjust:":"1%",
+                                
+                                "vertical-align":"top"
+                            })
+
+                        }
+                    ///////////////////////////////////////////////////////////////////
+                    // collecting information for the join log
+                    ///////////////////////////////////////////////////////////////////
+                }
+            ///////////////////////////////////////////////////////////////////
+            // the join log is basically for everyone to use if they want to join the organization
+            ///////////////////////////////////////////////////////////////////
 
 
 
@@ -305,18 +430,6 @@
                         "margin-top":"100%"
                     }).show().append("<h1 class = 'letters'> &#931;</h1>")
                     
-
-                    
-
-                    
-                    // var some_home_info = $(".container:first").html()
-                    // console.log(some_home_info)
-                    // $(".container:first").remove();
-                    
-                    // $(".footers").before(some_home_info)
-                    // $(".footers").before("<div class = 'container'></div>")
-                    // // $("div:has('.shape')").wrapAll($(".container:first"))
-                    // $(".container:first").append($("div:has('.shape')"))
                     
                     // mobile animation
                     {
@@ -372,7 +485,7 @@
                         "width":"140px",
                         "margin-left":"0px",
                         "z-index":"20"
-                    }).draggable()
+                    })
                     
                     $(".solo_group").css({
                         "color":"white",
@@ -383,12 +496,7 @@
                     $(".footers").css({
                         "margin-left":"7%"
                     })
-                    // var letters = $(".group_name").html()
-                    // $(".group_name").remove();
-                    // $(".picture_holder_1").before(letters)
-                    // $(".container").pretty_print({
-                    //     objects:$(".solo_group")
-                    // })
+
                     
                     $(".group_name").css({
                         "background-color":"black",
@@ -422,6 +530,16 @@
                         "width":$(".picture_holder_4").css("width")
                     })
                     
+                    // join_form form editing
+                        
+                        $("form").css({
+                            "width":$(".join_form").css("width"),
+                            "margin-left":"-23em"
+                        })
+                    
+                    ///////////////////////////////////////////////////////////////////
+                    // this work is for editing the form jangled in the media
+                    ///////////////////////////////////////////////////////////////////
                     
               }
               
@@ -442,15 +560,7 @@
                     
 
                     
-                    // var some_home_info = $(".container:first").html()
-                    // console.log(some_home_info)
-                    // $(".container:first").remove();
-                    
-                    // $(".footers").before(some_home_info)
-                    // $(".footers").before("<div class = 'container'></div>")
-                    // // $("div:has('.shape')").wrapAll($(".container:first"))
-                    // $(".container:first").append($("div:has('.shape')"))
-                    
+
                     $(".nav_container").css({
                         "width":"2400px",
                         "margin-left":"20px"
@@ -465,12 +575,7 @@
                     $(".footers").css({
                         "margin-left":"7%"
                     })
-                    // var letters = $(".group_name").html()
-                    // $(".group_name").remove();
-                    // $(".picture_holder_1").before(letters)
-                    // $(".container").pretty_print({
-                    //     objects:$(".solo_group")
-                    // })
+
                     
                     $(".group_name").css({
                         "background-color":"black",
@@ -558,6 +663,17 @@
                     //controls mobile nav animation
                     //////////////////////////////////////////
                     
+                    // join_form form editing
+                        
+                        $("form").css({
+                            "width":$(".join_form").css("width"),
+                            "margin-left":"-10em"
+                        })
+                    
+                    ///////////////////////////////////////////////////////////////////
+                    // this work is for editing the form jangled in the media
+                    ///////////////////////////////////////////////////////////////////
+                                        
    
                     
                     
@@ -577,19 +693,7 @@
                         "margin-left":"15%",
                         "margin-top":"40%"
                     }).show().append("<h1 class = 'letters'> &#931;</h1>")
-                    
 
-                    
-
-                    
-                    // var some_home_info = $(".container:first").html()
-                    // console.log(some_home_info)
-                    // $(".container:first").remove();
-                    
-                    // $(".footers").before(some_home_info)
-                    // $(".footers").before("<div class = 'container'></div>")
-                    // // $("div:has('.shape')").wrapAll($(".container:first"))
-                    // $(".container:first").append($("div:has('.shape')"))
                     
                     $(".nav_container").css({
                         "width":"2400px",
@@ -605,12 +709,7 @@
                     $(".footers").css({
                         "margin-left":"7%"
                     })
-                    // var letters = $(".group_name").html()
-                    // $(".group_name").remove();
-                    // $(".picture_holder_1").before(letters)
-                    // $(".container").pretty_print({
-                    //     objects:$(".solo_group")
-                    // })
+
                     
                     $(".group_name").css({
                         "background-color":"black",
@@ -691,12 +790,22 @@
                             $(".pretty_0").fadeToggle()
 
                         })
-                        
-                        
-                        
+
                     //////////////////////////////////////////
                     //controls mobile nav animation
                     //////////////////////////////////////////
+                    
+                    // join_form form editing
+                        
+                        $("form").css({
+                            "width":$(".join_form").css("width"),
+                            "margin-left":"-2em"
+                        })
+                    
+                    ///////////////////////////////////////////////////////////////////
+                    // this work is for editing the form jangled in the media
+                    ///////////////////////////////////////////////////////////////////
+                                        
                     
               }
               
@@ -723,92 +832,7 @@
             //  picture holder 4 is for one display of the page
             ///////////////////////////////////////////////////////////////////
             
-            //join_log
-                {
-                    $(".join_log").css({
-                        
-                        "border":"1px solid rgb(227, 227, 227)",
-                        "height":"8em",
-                        "width":.8 * browser_window.outerWidth,
-                        "margin-top":"25em",
-                        "margin-left":"10em",
-                        "z-index":"2",
-                        "position":"absolute",
-                        "border-top-left-radius": "100px",
-                        "border-top-right-radius": "100px",
-                        "background-color":"black"
-                        
-                    })
-                    
-                    $(".join_log > h1").css({
-                        "margin-top":".7em",
-                        "font-size":"3em",
-                        "text-align":"center",
-                        "color":"grey",
-                    })
-                    
-                    $(".join_form ").css({
-                        "z-index":"-1",
-                        "border":"1px solid rgb(227, 227, 227)",
-                        "height":"8em",
-                        "width":.8 * browser_window.outerWidth,
-                        "margin-top":"25em",
-                        "margin-left":"10em",
-                        "position":"absolute",
-                        "border-top-left-radius": "100px",
-                        "border-top-right-radius": "100px"
-                    })
-                    
-                    $(".join_form ").animate({
-                        "height":"44em",
-                        "border-bottom-left-radius": "100px",
-                        "border-bottom-right-radius": "100px"
-                        
-                    },2000)
-                    
 
-                    
-                    $(".footers").animate({
-                        "margin-top":"20em"
-                    },1000)
-                    
-                    // form
-                        {
-                            $(".first_name").css({
-                                "margin-top":"10em"
-                            })
-                            $(".last_name").css({
-                                "margin-top":"10em"
-                            })
-                            $(".age").css({
-                                "margin-top":"10em"
-                            })
-                            $(".telephone").css({
-                                "margin-top":"3em"
-                            })
-                            $(".city").css({
-                                "margin-top":"3em"
-                            })
-                            $(".submit").css({
-                                "margin-left":"52em",
-                                "margin-top":"-2.5em"
-                            })
-                            $(".joining textarea").css({
-                                "height":"10em",
-                                "width":.8 * numberParse($(".join_form").css("width")),
-                                "text-size-adjust:":"1%",
-                                
-                                "vertical-align":"top"
-                            })
-
-                        }
-                    ///////////////////////////////////////////////////////////////////
-                    // collecting information for the join log
-                    ///////////////////////////////////////////////////////////////////
-                }
-            ///////////////////////////////////////////////////////////////////
-            // the join log is basically for everyone to use if they want to join the organization
-            ///////////////////////////////////////////////////////////////////
 
             // position fix
             $("body > *").css({
